@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="182dp"
-        tools:layout_editor_absoluteY="373dp">
+        tools:layout_editor_abViewPager2soluteY="373dp">
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="500dp" />
+        tools:layout_editor_absoluteY="500dp"
+        />
 
 </LinearLayout>

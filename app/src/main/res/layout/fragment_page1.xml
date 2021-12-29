@@ -13,20 +13,12 @@
 
 
     <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-
+    <ListView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/contacts_lv"
+    />
 
-        android:layout_height="match_parent"
-
-        android:text="page1"
-
-        android:background="@color/white"
-
-        android:textSize="33sp"
-
-        />
 
 
 
