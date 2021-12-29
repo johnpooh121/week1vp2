@@ -31,7 +31,20 @@ public class MainActivity extends AppCompatActivity {
                 new TabLayoutMediator.TabConfigurationStrategy() {
                     @Override
                     public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        tab.setText("Tab " + (position + 1));
+                        switch (position){
+                            case 0:{
+                                tab.setText("Contacts"); //텝레이아웃 상단 타이틀 제목 설정
+                                break;
+                            }
+                            case 1:{
+                                tab.setText("Album");
+                                break;
+                            }
+                            case 2:{
+                                tab.setText("Free");
+                                break;
+                            }
+                        }
                     }
                 }).attach();
     }
