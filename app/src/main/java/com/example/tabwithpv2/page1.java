@@ -1,4 +1,5 @@
 package com.example.tabwithpv2;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -107,9 +108,19 @@ public class page1 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 //각 아이템을 분간 할 수 있는 position과 뷰
+                Human_information human = humanlist.get(position);
                 int id = getContext().getResources().getIdentifier("ic_launcher_foreground", "drawable", getContext().getPackageName());
                 Toast.makeText(getContext(), id, Toast.LENGTH_LONG).show();
 
+                Intent intent = new Intent(getActivity(),MainActivity2.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("imageId",human.getImage());
+                bundle.putString("name",human.getName());
+                bundle.putString("number",human.getNumber());
+                intent.putExtras(bundle);
+
+
+                startActivity(intent);
             }
         });
 
