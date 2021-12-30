@@ -1,7 +1,5 @@
 package com.example.tabwithpv2;
 
-import static com.google.android.material.internal.ContextUtils.getActivity;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

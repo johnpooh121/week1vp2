@@ -25,7 +25,7 @@ public class page3 extends Fragment {
     private String mParam2;
 
     public page3() {
-        // Required empty public constructor
+
     }
 
     /**

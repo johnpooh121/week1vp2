@@ -1,5 +1,7 @@
 package com.example.tabwithpv2;
 
+import android.net.Uri;
+
 public class Human_information {
     private int image;
     private String name;

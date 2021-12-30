@@ -1,0 +1,58 @@
+{
+  "human": [
+    {
+      "face" : "nayeon",
+      "name" : "나연",
+      "phoneNumber" : "010-1234-5678"
+
+    },
+    {
+      "face" : "jeongyeon",
+      "name" : "정연",
+      "phoneNumber" : "010-2345-6789"
+
+    },
+    {
+      "face" : "momo",
+      "name" : "모모",
+      "phoneNumber" : "010-3456-7891"
+
+    },
+    {
+      "face" : "sana",
+      "name" : "사나",
+      "phoneNumber" : "010-4567-8910"
+
+    },
+    {
+      "face" : "jihyo",
+      "name" : "지효",
+      "phoneNumber" : "010-5678-9101"
+
+    },
+    {
+      "face" : "mina",
+      "name" : "미나",
+      "phoneNumber" : "010-6789-1011"
+
+    },
+    {
+      "face" : "dahyun",
+      "name" : "다현",
+      "phoneNumber" : "010-7891-0111"
+
+    },
+    {
+      "face" : "chaeyoung",
+      "name" : "채영",
+      "phoneNumber" : "010-8910-1112"
+
+    },
+    {
+      "face" : "tzuyu",
+      "name" : "쯔위",
+      "phoneNumber" : "010-9101-1121"
+
+    }
+  ]
+}

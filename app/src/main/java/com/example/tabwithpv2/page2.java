@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -81,20 +82,20 @@ public class page2 extends Fragment {
         View rootview = inflater.inflate(R.layout.fragment_page2, container, false);
         ArrayList<pic> list = new ArrayList<>();
 
-        for (int i=0; i<3; i++) {
+        for (int i=0; i<5; i++) {
             list.add(new pic(R.drawable.ic_launcher_foreground,null)) ;
         }
 
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
         RecyclerView recyclerView = rootview.findViewById(R.id.page2RecyclerViewId) ;
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL, false));
-
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
+//        recyclerView.setLayout
         // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
         adapter = new page2Adapter(list) ;
         recyclerView.setAdapter(adapter) ;
 
         binding = FragmentPage2Binding.inflate(getLayoutInflater());
-        //FloatingActionButton fab = binding.page2FloatingActionButton;
+//        FloatingActionButton fab = binding.page2FloatingActionButton;
         FloatingActionButton fab = rootview.findViewById(R.id.page2FloatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

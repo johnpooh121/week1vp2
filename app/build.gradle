@@ -7,6 +7,9 @@ android {
     viewBinding {
         enabled = true
     }
+    dataBinding{
+        enabled=true
+    }
     defaultConfig {
         applicationId "com.example.tabwithpv2"
         minSdk 21

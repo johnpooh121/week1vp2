@@ -1,4 +1,5 @@
 package com.example.tabwithpv2;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -27,6 +34,9 @@ public class page1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    ArrayList<String> personNames = new ArrayList<>();
+    ArrayList<String> images = new ArrayList<>();
+    ArrayList<String> mobileNumbers = new ArrayList<>();
     ArrayList<Human_information> humanlist;
     ListView myListView;
     private static contactAdapter contactAdapter;
@@ -69,24 +79,57 @@ public class page1 extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_page1, container, false);
 
         humanlist = new ArrayList<>();
-        humanlist.add(new Human_information(R.drawable.ic_launcher_foreground,"가나다", "80111111"));
-        humanlist.add(new Human_information(R.drawable.ic_launcher_foreground,"나다라", "90111111"));
-        humanlist.add(new Human_information(R.drawable.ic_launcher_foreground,"다라마", "70111111"));
-        humanlist.add(new Human_information(R.drawable.ic_launcher_foreground,"라마바", "60111111"));
-        humanlist.add(new Human_information(R.drawable.ic_launcher_foreground,"마바사", "50111111"));
+
+        try {
+            // get JSONObject from JSON file
+            JSONObject obj = new JSONObject(loadJSONFromAsset());
+            // fetch JSONArray named users
+            JSONArray userArray = obj.getJSONArray("human");
+            // implement for loop for getting users list data
+            for (int i = 0; i < userArray.length(); i++) {
+                // create a JSONObject for fetching single user data
+                JSONObject userDetail = userArray.getJSONObject(i);
+                // fetch email and name and store it in arraylist
+                String face1 = userDetail.getString("face");
+                String name = userDetail.getString("name");
+                String phoneNumber = userDetail.getString("phoneNumber");
+                humanlist.add(new Human_information(this.getResources().getIdentifier(face1, "drawable", getContext().getPackageName()), name, phoneNumber));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         myListView = (ListView) rootView.findViewById(R.id.contacts_lv);
         contactAdapter = new contactAdapter(getContext(),humanlist);
         myListView.setAdapter(contactAdapter);
+
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 //각 아이템을 분간 할 수 있는 position과 뷰
-                Toast.makeText(getContext(), contactAdapter.getItem(position).getName(), Toast.LENGTH_LONG).show();
+                int id = getContext().getResources().getIdentifier("ic_launcher_foreground", "drawable", getContext().getPackageName());
+                Toast.makeText(getContext(), id, Toast.LENGTH_LONG).show();
+
             }
         });
-//        return inflater.inflate(R.layout.fragment_page1, container, false);
+
         return rootView;
+
+    }
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getActivity().getAssets().open("human_information.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 
 }
