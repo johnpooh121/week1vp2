@@ -1,26 +1,22 @@
 package com.example.tabwithpv2;
+
 import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.tabwithpv2.databinding.FragmentPage2Binding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -81,13 +77,13 @@ public class page2 extends Fragment {
         View rootview = inflater.inflate(R.layout.fragment_page2, container, false);
         ArrayList<pic> list = new ArrayList<>();
 
-        for (int i=0; i<3; i++) {
-            list.add(new pic(R.drawable.ic_launcher_foreground,null)) ;
-        }
+//        for (int i=0; i<8; i++) {
+//            list.add(new pic(R.drawable.ic_launcher_foreground,null)) ;
+//        }
 
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
         RecyclerView recyclerView = rootview.findViewById(R.id.page2RecyclerViewId) ;
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false));
 
         // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
         adapter = new page2Adapter(list) ;
@@ -102,8 +98,8 @@ public class page2 extends Fragment {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
                 //adapter.addItem(new pic(R.drawable.ic_launcher_background,null));
-                adapter.notifyDataSetChanged();
-                Toast.makeText(getContext(), "hi!", Toast.LENGTH_LONG).show();
+                //adapter.notifyDataSetChanged();
+                //Toast.makeText(getContext(), "hi!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(intent, GET_GALLERY_IMAGE);
@@ -120,6 +116,7 @@ public class page2 extends Fragment {
 
             Uri selectedImageUri = data.getData();
             adapter.addItem(new pic(0,selectedImageUri));
+            Toast.makeText(getContext(), ""+adapter.getItemCount(), Toast.LENGTH_LONG).show();
             adapter.notifyDataSetChanged();
 
         }

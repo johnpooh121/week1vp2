@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class page2Adapter extends RecyclerView.Adapter<page2Adapter.ViewHolder> {
 
-    private ArrayList<pic> pics = null ;
+    public ArrayList<pic> pics = null ;
     ViewGroup parent;
     public void addItem(pic nw){
         pics.add(nw);
