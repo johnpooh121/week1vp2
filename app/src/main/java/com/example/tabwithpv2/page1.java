@@ -94,7 +94,8 @@ public class page1 extends Fragment {
                 String face1 = userDetail.getString("face");
                 String name = userDetail.getString("name");
                 String phoneNumber = userDetail.getString("phoneNumber");
-                humanlist.add(new Human_information(this.getResources().getIdentifier(face1, "drawable", getContext().getPackageName()), name, phoneNumber));
+//                humanlist.add(new Human_information(this.getResources().getIdentifier(face1, "drawable", getContext().getPackageName()), name, phoneNumber));
+                humanlist.add(new Human_information(R.drawable.ic_launcher_foreground, name, phoneNumber));
             }
         } catch (JSONException e) {
             e.printStackTrace();
