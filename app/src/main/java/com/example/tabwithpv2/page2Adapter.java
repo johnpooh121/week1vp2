@@ -1,10 +1,13 @@
 package com.example.tabwithpv2;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +17,7 @@ import java.util.ArrayList;
 
 public class page2Adapter extends RecyclerView.Adapter<page2Adapter.ViewHolder> {
 
-    private ArrayList<pic> pics = null ;
+    public ArrayList<pic> pics = null ;
     ViewGroup parent;
     public void addItem(pic nw){
         pics.add(nw);
@@ -59,6 +62,19 @@ public class page2Adapter extends RecyclerView.Adapter<page2Adapter.ViewHolder> 
             Glide.with(parent.getContext()).load(imgid.uri).into(holder.imageView1);
             //holder.imageView1.setImageURI(imgid.getUri());
         }
+        holder.imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                Toast.makeText(parent.getContext(),""+imgid.getImage(),Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(parent.getContext(),picFocus.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("img",imgid.image);
+                bundle.putString("uri",imgid.uri.toString());
+                intent.putExtras(bundle);
+                parent.getContext().getApplicationContext().startActivity(intent);
+            }
+        });
     }
 
     // getItemCount() - 전체 데이터 갯수 리턴.
