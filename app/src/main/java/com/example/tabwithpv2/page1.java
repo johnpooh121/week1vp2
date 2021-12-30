@@ -109,8 +109,8 @@ public class page1 extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 //각 아이템을 분간 할 수 있는 position과 뷰
                 Human_information human = humanlist.get(position);
-                int id = getContext().getResources().getIdentifier("ic_launcher_foreground", "drawable", getContext().getPackageName());
-                Toast.makeText(getContext(), id, Toast.LENGTH_LONG).show();
+//                int id = getContext().getResources().getIdentifier("ic_launcher_foreground", "drawable", getContext().getPackageName());
+//                Toast.makeText(getContext(), id, Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(getActivity(),MainActivity2.class);
                 Bundle bundle = new Bundle();
