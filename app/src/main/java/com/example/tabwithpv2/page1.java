@@ -1,6 +1,5 @@
 package com.example.tabwithpv2;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -94,8 +94,8 @@ public class page1 extends Fragment {
                 String face1 = userDetail.getString("face");
                 String name = userDetail.getString("name");
                 String phoneNumber = userDetail.getString("phoneNumber");
-//                humanlist.add(new Human_information(this.getResources().getIdentifier(face1, "drawable", getContext().getPackageName()), name, phoneNumber));
-                humanlist.add(new Human_information(R.drawable.ic_launcher_foreground, name, phoneNumber));
+                humanlist.add(new Human_information(this.getResources().getIdentifier(face1, "drawable", getContext().getPackageName()), name, phoneNumber));
+//                humanlist.add(new Human_information(R.drawable.ic_launcher_foreground, name, phoneNumber));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -104,6 +104,7 @@ public class page1 extends Fragment {
         myListView = (ListView) rootView.findViewById(R.id.contacts_lv);
         contactAdapter = new contactAdapter(getContext(),humanlist);
         myListView.setAdapter(contactAdapter);
+        FloatingActionButton fab = rootView.findViewById(R.id.page1FloatingActionButton);
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -113,13 +114,19 @@ public class page1 extends Fragment {
 //                int id = getContext().getResources().getIdentifier("ic_launcher_foreground", "drawable", getContext().getPackageName());
 //                Toast.makeText(getContext(), id, Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(getActivity(),MainActivity2.class);
+                Intent intent = new Intent(getActivity(), human_detail.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("imageId",human.getImage());
                 bundle.putString("name",human.getName());
                 bundle.putString("number",human.getNumber());
                 intent.putExtras(bundle);
-
+                startActivity(intent);
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),human_add.class);
 
                 startActivity(intent);
             }

@@ -68,6 +68,7 @@ public class page2Adapter extends RecyclerView.Adapter<page2Adapter.ViewHolder> 
             public void onClick(View v) {
                 Toast.makeText(parent.getContext(),""+imgid.getImage(),Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(parent.getContext(),picFocus.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 Bundle bundle = new Bundle();
                 bundle.putInt("img",imgid.image);
                 bundle.putString("uri",imgid.uri.toString());

@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-public class MainActivity2 extends AppCompatActivity {
+public class human_detail extends AppCompatActivity {
 
     public ImageView face;
     public TextView name1;
@@ -19,7 +17,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.human_detail);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();

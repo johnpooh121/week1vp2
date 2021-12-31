@@ -9,11 +9,15 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tabwithpv2">
         <activity
-            android:name=".MainActivity2"
+            android:name=".human_add"
+            android:exported="false" />
+        <activity
+            android:name=".human_detail"
             android:exported="false" />
         <activity
             android:name=".picFocus"

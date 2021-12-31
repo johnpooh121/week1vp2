@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class contactAdapter extends BaseAdapter {
@@ -44,7 +46,8 @@ public class contactAdapter extends BaseAdapter {
         TextView movieName = (TextView)view.findViewById(R.id.name);
         TextView grade = (TextView)view.findViewById(R.id.phoneNumber);
 
-        imageView.setImageResource(sample.get(position).getImage());
+//        imageView.setImageResource(sample.get(position).getImage());
+        Glide.with(parent.getContext()).load(sample.get(position).getImage()).into(imageView);
         movieName.setText(sample.get(position).getName());
         grade.setText(sample.get(position).getNumber());
 

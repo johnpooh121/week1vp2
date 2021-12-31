@@ -103,6 +103,8 @@ public class page2 extends Fragment {
 //                startActivityForResult(intent, GET_GALLERY_IMAGE);
                 //Toast.makeText(getContext(), getContext().getPackageName(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//                intent.ad
+
                 intent.setType("image/*");
                 //intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
