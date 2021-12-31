@@ -16,6 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -128,6 +130,7 @@ public class page1 extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),human_add.class);
 
+                Bundle bundle = new Bundle();
                 startActivity(intent);
             }
         });
@@ -139,6 +142,8 @@ public class page1 extends Fragment {
         String json = null;
         try {
             InputStream is = getActivity().getAssets().open("human_information.json");
+//            FileInputStream is1 = getActivity().openFileInput("myFile.json");
+//            InputStream is = getActivity().openFileInput("myFile.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);

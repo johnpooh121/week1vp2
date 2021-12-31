@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:hint="예) 홍길동"
                 android:inputType=""
+                android:id="@+id/addName"
                 android:privateImeOptions="defaultInputmode=korean"
                 />
         </LinearLayout>
@@ -47,9 +48,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
+                android:id="@+id/addNumber"
                 android:hint="예) 010-0000-0000"
                 />
         </LinearLayout>
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="추가하기"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"/>
+
 
     </LinearLayout>
 
