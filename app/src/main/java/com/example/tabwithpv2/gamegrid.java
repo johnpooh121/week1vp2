@@ -82,9 +82,14 @@ public class gamegrid extends Fragment {
     }
 
     public int change(int x,int d){
-        if(x+d>256)return 255;
-        if(x-d<0)return 0;
+        if(x+d>255) return 255;
+        if(x+d<0) return 0;
         return x+d;
+    }
+    public int myrd(int l,int r){
+        Random rd =new Random();
+        int k = rd.nextInt(r-l+1)+l;
+        return k;
     }
 
     @Override
@@ -107,11 +112,17 @@ public class gamegrid extends Fragment {
         params.weight=1;
         //LayoutParams layoutParams = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
         Random rd = new Random();
+
         int R = rd.nextInt(256);
         int G = rd.nextInt(256);
         int B = rd.nextInt(256);
-        int d =Integer.max((25-stg/5),10)+rd.nextInt(Integer.max((10-stg/5),3));
-        int nR=change(R,d),nG=change(G,d),nB=change(B,d);
+        float range=Integer.max((25-stg/5),8);
+        int theta =myrd(-180,180);
+        int alpha =myrd(-90,90);
+        int dr=(int)(range*Math.sin(Math.toRadians(alpha)));
+        int dg =(int)(range*Math.cos(Math.toRadians(alpha)*Math.sin(Math.toRadians(theta))));
+        int db =(int)(range*Math.cos(Math.toRadians(alpha)*Math.cos(Math.toRadians(theta))));
+        int nR=change(R,dr),nG=change(G,dg),nB=change(B,db);
 
         String bg = "#"+conv(R)+conv(G)+conv(B);
         String col = bg;
