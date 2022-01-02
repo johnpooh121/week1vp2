@@ -3,6 +3,7 @@ package com.example.tabwithpv2;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +27,13 @@ public class page3Adapter extends RecyclerView.Adapter<page3Adapter.ViewHolder> 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ViewHolder extends RecyclerView.ViewHolder {
         View view1 ;
+        Layout ly;
         ViewHolder(View itemView) {
             super(itemView) ;
 
             // 뷰 객체에 대한 참조. (hold strong reference)
             view1 = itemView.findViewById(R.id.view) ;
+            //ly = itemView.findViewById(R.id.outerLayout);
         }
     }
 
@@ -57,8 +60,8 @@ public class page3Adapter extends RecyclerView.Adapter<page3Adapter.ViewHolder> 
     public void onBindViewHolder(page3Adapter.ViewHolder holder, int position) {
         cell Cell= cells.get(position);
         int w = holder.view1.getWidth();
-        holder.view1.getLayoutParams().width= (int) Cell.l;
-        holder.view1.getLayoutParams().height= (int) Cell.l;
+        holder.view1.getLayoutParams().width= (int)((float)Cell.l*0.9);
+        holder.view1.getLayoutParams().height= (int)((float)Cell.l*0.8);
         //Toast.makeText(parent.getContext(),""+Cell.l,Toast.LENGTH_SHORT).show();
         //holder.view1.getLayoutParams().width=10;
         //holder.view1.getLayoutParams().height=10;
