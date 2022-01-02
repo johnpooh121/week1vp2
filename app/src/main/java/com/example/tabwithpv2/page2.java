@@ -1,8 +1,7 @@
 package com.example.tabwithpv2;
 
-import static android.app.Activity.RESULT_OK;
-
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,13 +10,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.tabwithpv2.databinding.FragmentPage2Binding;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -164,5 +167,112 @@ public class page2 extends Fragment {
             }
         }
 
+    }
+
+    public static class page2Adapter extends RecyclerView.Adapter<page2Adapter.ViewHolder> {
+
+        public ArrayList<pic> pics = null ;
+        ViewGroup parent;
+        public void addItem(pic nw){
+            pics.add(nw);
+        }
+
+        // 아이템 뷰를 저장하는 뷰홀더 클래스.
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            ImageView imageView1 ;
+
+            ViewHolder(View itemView) {
+                super(itemView) ;
+
+                // 뷰 객체에 대한 참조. (hold strong reference)
+                imageView1 = itemView.findViewById(R.id.imageView) ;
+            }
+        }
+
+        // 생성자에서 데이터 리스트 객체를 전달받음.
+        page2Adapter(ArrayList<pic> list) {
+            pics = list ;
+        }
+
+        // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            Context context = parent.getContext() ;
+            this.parent=parent;
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
+
+            View view = inflater.inflate(R.layout.pic_layout, parent, false) ;
+            ViewHolder vh = new ViewHolder(view) ;
+
+            return vh ;
+        }
+
+        // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            pic imgid = pics.get(position);
+            if(imgid.getImage()!=0)holder.imageView1.setImageResource(imgid.getImage());
+            else{
+                Glide.with(parent.getContext()).load(imgid.uri).into(holder.imageView1);
+                //holder.imageView1.setImageURI(imgid.getUri());
+            }
+            holder.imageView1.setOnClickListener(new View.OnClickListener() {
+                @Override
+
+                public void onClick(View v) {
+                    Toast.makeText(parent.getContext(),""+imgid.getImage(),Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(parent.getContext(),picFocus.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("img",imgid.image);
+                    bundle.putString("uri",imgid.uri.toString());
+                    intent.putExtras(bundle);
+                    parent.getContext().getApplicationContext().startActivity(intent);
+                }
+            });
+        }
+
+        // getItemCount() - 전체 데이터 갯수 리턴.
+        @Override
+        public int getItemCount() {
+            return pics.size() ;
+        }
+
+
+    }
+
+    public static class pic {
+        int image;
+        Uri uri;
+
+        pic(int img,Uri u){
+            this.image = img;
+            this.uri=u;
+        }
+        int getImage(){
+            return image;
+        }
+        Uri getUri(){return uri;}
+    }
+
+    public static class picFocus extends AppCompatActivity {
+
+        public PhotoView imgView;
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_pic_focus);
+            Intent intent = getIntent();
+            Bundle bundle = intent.getExtras();
+
+            int img = bundle.getInt("img");
+            Uri uri = Uri.parse(bundle.getString("uri"));
+            imgView = findViewById(R.id.focusViewer);
+            if(img!=0)imgView.setImageResource(img);
+            else{
+                Glide.with(this).load(uri).into(imgView);
+                //holder.imageView1.setImageURI(imgid.getUri());
+            }
+        }
     }
 }

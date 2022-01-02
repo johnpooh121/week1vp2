@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".page2$picFocus">
-
-    <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/focusViewer"
+    tools:context=".page3$game4">
+    <Button
+        android:id="@+id/page3button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@android:drawable/ic_dialog_alert" />
+        android:text="버튼"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

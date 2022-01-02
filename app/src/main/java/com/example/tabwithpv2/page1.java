@@ -1,23 +1,30 @@
 package com.example.tabwithpv2;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -50,7 +57,7 @@ public class page1 extends Fragment {
 
     /**
      * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * this fragment using the pr   `ovided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
@@ -156,4 +163,143 @@ public class page1 extends Fragment {
         return json;
     }
 
+    public static class human_add extends AppCompatActivity {
+        Button button;
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_human_add);
+            Button button = (Button) findViewById(R.id.addButton);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EditText editName = (EditText)findViewById(R.id.addName);
+                    EditText editNumber = (EditText)findViewById(R.id.addNumber);
+                    if (editName.getText().toString().length() == 0 ) {
+                        Toast.makeText(getApplicationContext(), "이름을 입력해주세요", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (editNumber.getText().toString().length() == 0) {
+                            Toast.makeText(getApplicationContext(), "번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "둘 다 입력해도 안되지롱", Toast.LENGTH_SHORT).show();
+    //                        try{
+    //                            FileOutputStream fos = openFileOutput("myFile.json",MODE_PRIVATE);
+    //                            DataOutputStream dos = new DataOutputStream(fos);
+    //                            dos.writeInt(100);
+    //                            dos.writeUTF("문자열");
+    //                            dos.flush();
+    //                            dos.close();
+    //                        } catch (IOException e) {
+    //                            Toast.makeText(getApplicationContext(), "catch 입력해주세요", Toast.LENGTH_SHORT).show();
+    //                            e.printStackTrace();
+    //                        }
+                        }
+                    }
+
+                }
+            });
+        }
+
+    }
+
+    public static class human_detail extends AppCompatActivity {
+
+        public ImageView face;
+        public TextView name1;
+        public TextView number1;
+
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.human_detail);
+
+            Intent intent = getIntent();
+            Bundle bundle = intent.getExtras();
+
+            int img = bundle.getInt("imageId");
+            String name = bundle.getString("name");
+            String number = bundle.getString("number");
+
+            face = findViewById(R.id.faceInDetail);
+            name1 = findViewById(R.id.nameDetail);
+            number1 = findViewById(R.id.numberDetail);
+
+            face.setImageResource(img);
+            name1.setText(name);
+            number1.setText(number);
+
+        }
+    }
+
+    public static class Human_information {
+        private int image;
+        private String name;
+        private String phoneNumber;
+
+        public Human_information(int image, String name, String phoneNumber){
+            this.image = image;
+            this.name = name;
+            this.phoneNumber = phoneNumber;
+        }
+
+        public int getImage()
+        {
+            return this.image;
+        }
+
+        public String getName()
+        {
+            return this.name;
+        }
+
+        public String getNumber()
+        {
+            return this.phoneNumber;
+        }
+    }
+
+    public static class contactAdapter extends BaseAdapter {
+        Context mContext = null;
+        LayoutInflater mLayoutInflater = null;
+        ArrayList<Human_information> sample;
+
+        public contactAdapter(Context context, ArrayList<Human_information> data) {
+            mContext = context;
+            sample = data;
+            mLayoutInflater = LayoutInflater.from(mContext);
+        }
+
+        @Override
+        public int getCount() {
+            return sample.size();
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public Human_information getItem(int position) {
+            return sample.get(position);
+        }
+
+        @Override
+        public View getView(int position, View converView, ViewGroup parent) {
+            View view = mLayoutInflater.inflate(R.layout.contact_component, null);
+
+            ImageView imageView = (ImageView)view.findViewById(R.id.face);
+            TextView movieName = (TextView)view.findViewById(R.id.name);
+            TextView grade = (TextView)view.findViewById(R.id.phoneNumber);
+
+    //        imageView.setImageResource(sample.get(position).getImage());
+            Glide.with(parent.getContext()).load(sample.get(position).getImage()).into(imageView);
+            movieName.setText(sample.get(position).getName());
+            grade.setText(sample.get(position).getNumber());
+
+            return view;
+        }
+    }
 }

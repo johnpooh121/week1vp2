@@ -14,13 +14,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tabwithpv2">
         <activity
-            android:name=".human_add"
+            android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".human_detail"
+            android:name=".page3$game9"
             android:exported="false" />
         <activity
-            android:name=".picFocus"
+            android:name=".page3$game4"
+            android:exported="false" />
+        <activity
+            android:name=".page1$human_add"
+            android:exported="false" />
+        <activity
+            android:name=".page1$human_detail"
+            android:exported="false" />
+        <activity
+            android:name=".page2$picFocus"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
