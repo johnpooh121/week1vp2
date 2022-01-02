@@ -1,5 +1,6 @@
 package com.example.tabwithpv2;
 
+import android.annotation.SuppressLint;
 import android.graphics.Point;
 import android.os.Bundle;
 
@@ -45,7 +46,7 @@ public class page3 extends Fragment {
     View rootview;
     int sz,stage,life,l;
     public page3() {
-        stage=1;life=3;l=4;
+        stage=1;life=3;l=2;
     }
 
     /**
@@ -106,17 +107,18 @@ public class page3 extends Fragment {
         return rootview;
     }
 
+    @SuppressLint("NewApi")
     public void handletouch(Boolean iscorrect){
         //Toast.makeText(getContext(),""+iscorrect,Toast.LENGTH_SHORT).show();
         if(iscorrect){
             stage++;
             ((TextView)rootview.findViewById(R.id.stage)).setText(""+stage);
-
+            if(stage%5==0)l++;
+            //l=Integer.min(l,10);
             Random rd = new Random();
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
             fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
-
         }
         else{
             life--;
