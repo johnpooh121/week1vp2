@@ -10,16 +10,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.gridlayout.widget.GridLayout;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-//import android.widget.GridLayout;
 import android.widget.Button;
-import android.widget.GridLayout.LayoutParams;
+
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,14 +88,14 @@ public class gamegrid extends Fragment {
         LinearLayout.LayoutParams params;
 
         int sz = (int)(((float)pt.x)*0.9);
-        int cellsz =(int)(((float)(sz-10*(l+1)))/l);
+        int cellsz = (int)(((float)(sz-10*(l+1)))/l);
         params = new LinearLayout.LayoutParams(cellsz,cellsz);
         params.setMargins(5,5,5,5);
         params.weight=1;
         //LayoutParams layoutParams = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
         for(int i=1;i<=l;i++){
-            for(int j=1;j<=l;j++){
-                Button v = new Button(getContext());
+                for(int j=1;j<=l;j++){
+                    Button v = new Button(getContext());
                 v.setBackgroundColor(Color.parseColor("#00ff00"));
                 if(i==x&&j==y){
                     v.setBackgroundColor(Color.parseColor("#000000"));
