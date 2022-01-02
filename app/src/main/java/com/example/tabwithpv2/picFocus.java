@@ -21,7 +21,10 @@ public class picFocus extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         int img = bundle.getInt("img");
-        Uri uri = Uri.parse(bundle.getString("uri"));
+        Uri uri=null;
+        if(img==0){
+            uri=Uri.parse(bundle.getString("uri"));
+        }
         imgView = findViewById(R.id.focusViewer);
         if(img!=0)imgView.setImageResource(img);
         else{

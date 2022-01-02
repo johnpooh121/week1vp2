@@ -1,6 +1,7 @@
 package com.example.tabwithpv2;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         ViewPager2 viewPager2 = findViewById(R.id.view_pager);
         //</ get elements >
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             }
                             case 2:{
-                                tab.setText("Free");
+                                tab.setText("Game");
                                 break;
                             }
                         }

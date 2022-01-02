@@ -1,6 +1,7 @@
 package com.example.tabwithpv2;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 
@@ -49,6 +50,10 @@ public class page3 extends Fragment {
         stage=1;life=3;l=2;
     }
 
+    int calculatel(int stage){
+        return Integer.min(10,2+stage/5);
+    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -80,7 +85,29 @@ public class page3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        SharedPreferences sharedPreferences;
+        sharedPreferences = getContext().getSharedPreferences("maxscore",getContext().MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
         rootview = inflater.inflate(R.layout.fragment_page3, container, false);
+
+        maxscore = sharedPreferences.getInt("maxscore",1);
+        life = sharedPreferences.getInt("life",999);
+        stage = sharedPreferences.getInt("stage",0);
+        if(life == 999){
+            life = 3;
+        }
+        if(stage == 0){
+            stage = 1;
+        }
+
+
+        ((TextView)rootview.findViewById(R.id.maxscore)).setText(""+maxscore);
+        ((TextView)rootview.findViewById(R.id.life)).setText(""+life);
+        ((TextView)rootview.findViewById(R.id.stage)).setText(""+stage);
+        l = calculatel(stage);
+
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         Point pt = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getRealSize(pt);
@@ -111,11 +138,23 @@ public class page3 extends Fragment {
     @SuppressLint("NewApi")
     public void handletouch(Boolean iscorrect){
         //Toast.makeText(getContext(),""+iscorrect,Toast.LENGTH_SHORT).show();
+        SharedPreferences sharedPreferences;
+        sharedPreferences = getContext().getSharedPreferences("maxscore",getContext().MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
         if(iscorrect){
             stage++;
             ((TextView)rootview.findViewById(R.id.stage)).setText(""+stage);
-            if(stage%5==0)l++;
-            l=Integer.min(l,10);
+
+            maxscore = sharedPreferences.getInt("maxscore",1);
+            maxscore=Integer.max(maxscore,stage);
+            editor.putInt("maxscore",maxscore);
+            editor.putInt("stage",stage);
+            editor.putInt("life",life);
+            editor.commit();
+            ((TextView)rootview.findViewById(R.id.maxscore)).setText(""+maxscore);
+
+            l = calculatel(stage);
             Random rd = new Random();
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
@@ -123,11 +162,19 @@ public class page3 extends Fragment {
         }
         else{
             life--;
+
+            maxscore = sharedPreferences.getInt("maxscore",1);
+            editor.putInt("life",life);
+            editor.putInt("stage",stage);
+            editor.commit();
+
             ((TextView)rootview.findViewById(R.id.life)).setText(""+life);
             if(life<=0){
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 gameover fragment = new gameover(stage,this);
-                maxscore=Integer.max(maxscore,stage);
+
+
+
                 fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
             }
         }
@@ -138,6 +185,15 @@ public class page3 extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
         fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
+        SharedPreferences sharedPreferences;
+        sharedPreferences = getContext().getSharedPreferences("maxscore",getContext().MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("stage",stage);
+        editor.putInt("life",life);
+        editor.commit();
+
+        ((TextView)rootview.findViewById(R.id.stage)).setText(""+1);
+        ((TextView)rootview.findViewById(R.id.life)).setText(""+3);
     }
 
 }

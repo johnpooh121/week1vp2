@@ -80,6 +80,15 @@ public class page2 extends Fragment {
         View rootview = inflater.inflate(R.layout.fragment_page2, container, false);
         ArrayList<pic> list = new ArrayList<>();
 
+        list.add(new pic(R.drawable.tzuyu,null)) ;
+        list.add(new pic(R.drawable.dahyun,null)) ;
+        list.add(new pic(R.drawable.chaeyoung,null)) ;
+        list.add(new pic(R.drawable.sana,null)) ;
+        list.add(new pic(R.drawable.nayeon,null)) ;
+        list.add(new pic(R.drawable.momo,null)) ;
+        list.add(new pic(R.drawable.mina,null)) ;
+        list.add(new pic(R.drawable.jeongyeon,null)) ;
+        list.add(new pic(R.drawable.jihyo,null)) ;
 //        for (int i=0; i<8; i++) {
 //            list.add(new pic(R.drawable.ic_launcher_foreground,null)) ;
 //        }

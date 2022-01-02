@@ -67,6 +67,7 @@ public class gameover extends Fragment {
         View rootview =  inflater.inflate(R.layout.fragment_gameover, container, false);
         TextView tv = rootview.findViewById(R.id.txtid);
         tv.setText(stg+"단계에서 종료되었습니다.");
+
         Button btn = rootview.findViewById(R.id.restart);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {

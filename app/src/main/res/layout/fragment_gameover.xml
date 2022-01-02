@@ -44,15 +44,6 @@
             android:backgroundTint="@color/text"
             android:text="restart" />
 
-        <Button
-            android:id="@+id/rank"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
-            android:backgroundTint="@color/text"
-            android:textColor="@color/buttontext"
-            android:text="Ranking" />
     </LinearLayout>
 
 </FrameLayout>
