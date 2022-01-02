@@ -43,11 +43,11 @@ public class page3 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Button page3button;
-//    page3Adapter adapter;
+
+    Button start;
     FragmentPage3Binding binding;
-    int stage = 5, life = 3;
-    boolean gamestart = false;
+    int stage = 0, life = 3;
+    boolean gameStart= false;
 
 
 
@@ -80,19 +80,16 @@ public class page3 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        gameStart =false;
 
         SharedPreferences sharedPreferences;
         sharedPreferences = getActivity().getSharedPreferences("pref",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("life", life);
         editor.putInt("stage", stage);
+        editor.putBoolean("gamestart", gameStart);
         editor.commit();
 
-//        SharedPreferences pref = getActivity().getSharedPreferences("pref",Context.MODE_PRIVATE);
-//        SharedPreferences.Editor ed = pref.edit();
-//        ed.putInt("life", life);
-//        ed.putInt("stage", stage);
-//        ed.commit();
     }
 
     @Override
@@ -100,34 +97,49 @@ public class page3 extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-            View rootview = inflater.inflate(R.layout.page3_grid, container, false);
-            page3button = (Button) rootview.findViewById(R.id.page3button);
-            binding = FragmentPage3Binding.inflate(getLayoutInflater());
-            return rootview;
+        View rootview = inflater.inflate(R.layout.page3_grid, container, false);
+        gameStart = false;
+        start = (Button) rootview.findViewById(R.id.page3button) ;
+        binding = FragmentPage3Binding.inflate(getLayoutInflater());
+        return rootview;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (stage < 10) {
-            Intent intent = new Intent(getActivity(), game4.class);
-            startActivity(intent);
-        }
-        else if (stage<20){
-            Intent intent = new Intent(getActivity(), game9.class);
-            startActivity(intent);
-        }
-        else if (stage<30){
-            Intent intent = new Intent(getActivity(), game16.class);
-            startActivity(intent);
+
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        life = sharedPref.getInt("life", 888);
+        stage = sharedPref.getInt("stage", 888);
+        gameStart = sharedPref.getBoolean("gamestart", false);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        start.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+//                if (stage < 10) {
+                    Intent intent = new Intent(getActivity(), game4.class);
+                    startActivity(intent);
+                    gameStart = true;
+//                }
+            }
+        });
+        if(gameStart){
+            if (stage < 20){
+                Intent intent = new Intent(getActivity(), game9.class);
+                startActivity(intent);
+            }
+            //        else if (stage < 30){
+            //            Intent intent = new Intent(getActivity(), game16.class);
+            //            startActivity(intent);
+            //        }
         }
 
     }
 
     public static class game4 extends AppCompatActivity {
         int sz,randomnum,life,stage;
-
-        Button button1,button2,button4,button0;
+        int cur_stage;
+        Button button1,button2,button3,button0;
         ToggleButton checkbutton;
         LinearLayout linearLayout;
         GridLayout gridlayout;
@@ -138,24 +150,11 @@ public class page3 extends Fragment {
             super.onCreate(savedInstanceState);
 
             setContentView(R.layout.activity_game4);
-            stagecnt = (TextView) findViewById(R.id.stage4);
-            lifecnt = (TextView) findViewById(R.id.life4);
-
-//            SharedPreferences sharedPref = getSharedPreferences("pref", Context.MODE_PRIVATE);
-//            life = sharedPref.getInt("life", 888);
-//            stage = sharedPref.getInt("stage", 888);
-//            SharedPreferences.Editor editor = sharedPref.edit();
-
-//            stagecnt.setText("받아라");
-            stagecnt.setText(Integer.toString(stage));
-            lifecnt.setText(Integer.toString(life));
-
-//            Toast.makeText(this,Integer.toString(stage),Toast.LENGTH_SHORT).show();
 
             button0 = (Button) findViewById(R.id.button2_1) ;
             button1 = (Button) findViewById(R.id.button2_2) ;
             button2 = (Button) findViewById(R.id.button2_3) ;
-            button4 = (Button) findViewById(R.id.button2_4) ;
+            button3 = (Button) findViewById(R.id.button2_4) ;
 
             checkbutton = (ToggleButton) findViewById(R.id.checkBox);
             gridlayout = (GridLayout) findViewById(R.id.grid);
@@ -167,6 +166,65 @@ public class page3 extends Fragment {
             randomnum = random.nextInt(sz*sz);
 
             setcolor4(randomnum);
+
+            stagecnt = (TextView) findViewById(R.id.stage4);
+            lifecnt = (TextView) findViewById(R.id.life4);
+
+            SharedPreferences sharedPref = getSharedPreferences("pref", Context.MODE_PRIVATE);
+            life = sharedPref.getInt("life", 888);
+            stage = sharedPref.getInt("stage", 888);
+            cur_stage = 0;
+            SharedPreferences.Editor editor = sharedPref.edit();
+
+
+            (new Thread(new Runnable()
+            {
+
+                @Override
+                public void run()
+                {
+                    while (!Thread.interrupted())
+                        try
+                        {
+                            Thread.sleep(100);
+                            runOnUiThread(new Runnable() // start actions in UI thread
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    stagecnt.setText(Integer.toString(stage));
+                                    lifecnt.setText(Integer.toString(life));
+                                    if (cur_stage != stage) {
+                                        cur_stage = stage;
+                                        Random random = new Random(System.currentTimeMillis());
+                                        randomnum = random.nextInt(sz * sz);
+                                        setcolor4(randomnum);
+                                    }
+                                    if (stage == 10){
+                                        finish();
+                                        editor.putBoolean("gamestart", true);
+                                        editor.commit();
+                                    }
+
+                                    if(life==0){
+                                        editor.putInt("life", 3);
+                                        editor.putInt("stage", 0);
+                                        editor.putBoolean("gamestart", false);
+                                        editor.commit();
+                                        finish();
+                                    }
+
+
+                                }
+                            });
+                        }
+                        catch (InterruptedException e)
+                        {
+                            // ooops
+                        }
+                }
+            })).start();
+
 
 
         }
@@ -200,10 +258,10 @@ public class page3 extends Fragment {
                 button2.setBackgroundColor(getResources().getColor(color2));
             }
             if(randomnum == 3){
-                button4.setBackgroundColor(getResources().getColor(color1));
+                button3.setBackgroundColor(getResources().getColor(color1));
             }
             else{
-                button4.setBackgroundColor(getResources().getColor(color2));
+                button3.setBackgroundColor(getResources().getColor(color2));
             }
         }
 
@@ -215,24 +273,29 @@ public class page3 extends Fragment {
         @Override
         protected void onResume() {
             super.onResume();
+
             SharedPreferences sharedPref = getSharedPreferences("pref", Context.MODE_PRIVATE);
             life = sharedPref.getInt("life", 888);
             stage = sharedPref.getInt("stage", 888);
             SharedPreferences.Editor editor = sharedPref.edit();
+
+            button0 = (Button) findViewById(R.id.button2_1) ;
+            button1 = (Button) findViewById(R.id.button2_2) ;
+            button2 = (Button) findViewById(R.id.button2_3) ;
+            button3 = (Button) findViewById(R.id.button2_4) ;
+
+            checkbutton = (ToggleButton) findViewById(R.id.checkBox);
+            gridlayout = (GridLayout) findViewById(R.id.grid);
+            linearLayout = (LinearLayout) findViewById(R.id.linear);
+
+
             button0.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     if(randomnum == 0){
                         stage = stage + 1;
-                        editor.putInt("life", life);
-                        editor.putInt("stage", stage);
-                        editor.commit();
                     }
                     else{
                         life = life - 1;
-                        editor.putInt("life", life);
-                        editor.putInt("stage", stage);
-                        editor.commit();
-
                     }
 
                 }
@@ -246,7 +309,6 @@ public class page3 extends Fragment {
                     else{
                         life -=1;
                     }
-                    finish();
                 }
             });
 
@@ -258,11 +320,10 @@ public class page3 extends Fragment {
                     else{
                         life -=1;
                     }
-                    finish();
                 }
             });
 
-            button4.setOnClickListener(new View.OnClickListener() {
+            button3.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     if(randomnum == 3){
                         stage += 1;
@@ -270,9 +331,13 @@ public class page3 extends Fragment {
                     else{
                         life -=1;
                     }
-                    finish();
                 }
             });
+            editor.putInt("life", life);
+            editor.putInt("stage", stage);
+            editor.commit();
+            //////////////////////////////////////////게임 종료 //////////////////////////////////
+
 
 
             //////////////////////// 토글 버튼으로 배경색 바꾸기/////////////////////////////////
