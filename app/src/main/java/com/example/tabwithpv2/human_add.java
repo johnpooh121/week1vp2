@@ -1,5 +1,6 @@
 package com.example.tabwithpv2;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.AssetManager;
@@ -60,6 +61,8 @@ public class human_add extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_human_add);
         Button button = (Button) findViewById(R.id.addButton);
         button.setOnClickListener(new View.OnClickListener() {

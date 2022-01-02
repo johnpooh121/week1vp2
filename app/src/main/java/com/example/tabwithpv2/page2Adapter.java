@@ -57,9 +57,9 @@ public class page2Adapter extends RecyclerView.Adapter<page2Adapter.ViewHolder> 
     @Override
     public void onBindViewHolder(page2Adapter.ViewHolder holder, int position) {
         pic imgid = pics.get(position);
-        if(imgid.getImage()!=0)holder.imageView1.setImageResource(imgid.getImage());
+        if(imgid.getImage()!=0)Glide.with(parent.getContext()).load(imgid.getImage()).thumbnail(0.1f).into(holder.imageView1);
         else{
-            Glide.with(parent.getContext()).load(imgid.uri).into(holder.imageView1);
+            Glide.with(parent.getContext()).load(imgid.uri).thumbnail(0.1f).into(holder.imageView1);
             //holder.imageView1.setImageURI(imgid.getUri());
         }
         holder.imageView1.setOnClickListener(new View.OnClickListener() {

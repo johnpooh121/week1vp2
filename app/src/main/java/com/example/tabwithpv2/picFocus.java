@@ -1,5 +1,6 @@
 package com.example.tabwithpv2;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,6 +17,8 @@ public class picFocus extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_pic_focus);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
