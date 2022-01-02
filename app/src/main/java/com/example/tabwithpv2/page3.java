@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -23,6 +24,7 @@ import com.example.tabwithpv2.databinding.FragmentPage2Binding;
 import com.example.tabwithpv2.databinding.FragmentPage3Binding;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,9 +42,10 @@ public class page3 extends Fragment {
     private String mParam1;
     private String mParam2;
     FragmentPage3Binding binding;
-    int sz;
+    View rootview;
+    int sz,stage,life,l;
     public page3() {
-
+        stage=1;life=3;l=4;
     }
 
     /**
@@ -76,7 +79,7 @@ public class page3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootview = inflater.inflate(R.layout.fragment_page3, container, false);
+        rootview = inflater.inflate(R.layout.fragment_page3, container, false);
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         Point pt = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getRealSize(pt);
@@ -97,9 +100,27 @@ public class page3 extends Fragment {
                 }
             }
         });
-        gamegrid fragment = new gamegrid();
+        Random rd = new Random();
+        gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
         fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
         return rootview;
     }
 
+    public void handletouch(Boolean iscorrect){
+        //Toast.makeText(getContext(),""+iscorrect,Toast.LENGTH_SHORT).show();
+        if(iscorrect){
+            stage++;
+            ((TextView)rootview.findViewById(R.id.stage)).setText(""+stage);
+
+            Random rd = new Random();
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
+            fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
+
+        }
+        else{
+            life--;
+            ((TextView)rootview.findViewById(R.id.life)).setText(""+life);
+        }
+    }
 }

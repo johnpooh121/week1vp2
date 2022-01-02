@@ -37,7 +37,12 @@ public class gamegrid extends Fragment {
     private String mParam1;
     private String mParam2;
     int l=10,x=2,y=2;
-    public gamegrid() {
+    page3 parent;
+    public gamegrid(int l,int x,int y,page3 pg3) {
+        this.l=l;
+        this.x=x;
+        this.y=y;
+        this.parent=pg3;
         // Required empty public constructor
     }
 
@@ -51,7 +56,7 @@ public class gamegrid extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static gamegrid newInstance(String param1, String param2) {
-        gamegrid fragment = new gamegrid();
+        gamegrid fragment = new gamegrid(1,1,1,null);
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,7 +79,6 @@ public class gamegrid extends Fragment {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_gamegrid, container, false);
         GridLayout grid = rootview.findViewById(R.id.grid);
-        if(grid==null) Toast.makeText(getContext(),"shit",Toast.LENGTH_SHORT).show();
         grid.setColumnCount(l);
         grid.setRowCount(l);
         Point pt = new Point();
@@ -87,7 +91,6 @@ public class gamegrid extends Fragment {
         params = new LinearLayout.LayoutParams(cellsz,cellsz);
         params.setMargins(5,5,5,5);
         params.weight=1;
-        Toast.makeText(getContext(),""+grid.getMeasuredWidth(),Toast.LENGTH_SHORT).show();
         //LayoutParams layoutParams = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
         for(int i=1;i<=l;i++){
             for(int j=1;j<=l;j++){
@@ -97,6 +100,20 @@ public class gamegrid extends Fragment {
                     v.setBackgroundColor(Color.parseColor("#000000"));
                 }
                 v.setLayoutParams(params);
+                int finali = i;
+                int finalj = j;
+                v.setOnClickListener(new View.OnClickListener() {
+                    int vx= finali,vy=finalj;
+                    @Override public void onClick(View v) {
+
+                        if(vx==x&&vy==y){
+                            parent.handletouch(true);
+                        }
+                        else{
+                            parent.handletouch(false);
+                        }
+
+                    } });
 
                 grid.addView(v);
             }
