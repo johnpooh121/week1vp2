@@ -38,13 +38,14 @@ public class gamegrid extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    int l=10,x=2,y=2;
+    int l=10,x=2,y=2,stg;
     page3 parent;
     public gamegrid(int l,int x,int y,page3 pg3) {
         this.l=l;
         this.x=x;
         this.y=y;
         this.parent=pg3;
+        stg=parent.stage;
         // Required empty public constructor
     }
 
@@ -81,7 +82,8 @@ public class gamegrid extends Fragment {
     }
 
     public int change(int x,int d){
-        if(x+d>256)return x-d;
+        if(x+d>256)return 255;
+        if(x-d<0)return 0;
         return x+d;
     }
 
@@ -98,7 +100,7 @@ public class gamegrid extends Fragment {
 
         LinearLayout.LayoutParams params;
 
-        int sz = (int)(((float)pt.x)*0.9);
+        int sz = (int)(((float)pt.x)*0.95);
         int cellsz = (int)(((float)(sz-10*(l+1)))/l);
         params = new LinearLayout.LayoutParams(cellsz,cellsz);
         params.setMargins(5,5,5,5);
@@ -108,7 +110,7 @@ public class gamegrid extends Fragment {
         int R = rd.nextInt(256);
         int G = rd.nextInt(256);
         int B = rd.nextInt(256);
-        int d =25+rd.nextInt(10);
+        int d =Integer.max((25-stg/5),10)+rd.nextInt(Integer.max((10-stg/5),3));
         int nR=change(R,d),nG=change(G,d),nB=change(B,d);
 
         String bg = "#"+conv(R)+conv(G)+conv(B);

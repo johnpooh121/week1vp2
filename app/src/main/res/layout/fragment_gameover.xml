@@ -31,6 +31,7 @@
             android:textStyle="bold"
             android:gravity="center_horizontal"
             android:text="000단계에서 종료되었습니다."
+            android:id="@+id/txtid"
             android:textSize="20dp" />
 
         <Button

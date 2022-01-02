@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,8 +25,11 @@ public class gameover extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    public gameover() {
+    int stg;
+    page3 parent;
+    public gameover(int stg,page3 par) {
+        this.stg=stg;
+        this.parent=par;
         // Required empty public constructor
     }
 
@@ -38,7 +43,7 @@ public class gameover extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static gameover newInstance(String param1, String param2) {
-        gameover fragment = new gameover();
+        gameover fragment = new gameover(0,null);
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +64,16 @@ public class gameover extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gameover, container, false);
+        View rootview =  inflater.inflate(R.layout.fragment_gameover, container, false);
+        TextView tv = rootview.findViewById(R.id.txtid);
+        tv.setText(stg+"단계에서 종료되었습니다.");
+        Button btn = rootview.findViewById(R.id.restart);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+
+                parent.pressRestart();
+
+            } });
+        return rootview;
     }
 }

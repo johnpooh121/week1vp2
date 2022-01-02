@@ -44,7 +44,7 @@ public class page3 extends Fragment {
     private String mParam2;
     FragmentPage3Binding binding;
     View rootview;
-    int sz,stage,life,l;
+    int sz,stage,life,l,maxscore=0;
     public page3() {
         stage=1;life=3;l=2;
     }
@@ -84,12 +84,13 @@ public class page3 extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         Point pt = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getRealSize(pt);
-        int csz = (int)((float)pt.x*0.9);
+        int csz = (int)((float)pt.x*0.95);
 
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(csz,csz);
         rootview.findViewById(R.id.gridcontainer).setLayoutParams(params);
-
+        LinearLayout grid = rootview.findViewById(R.id.outside);
+        grid.setBackgroundColor(getResources().getColor(R.color.white));
         ToggleButton tgbtn = rootview.findViewById(R.id.tgbtn);
         tgbtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -114,7 +115,7 @@ public class page3 extends Fragment {
             stage++;
             ((TextView)rootview.findViewById(R.id.stage)).setText(""+stage);
             if(stage%5==0)l++;
-            //l=Integer.min(l,10);
+            l=Integer.min(l,10);
             Random rd = new Random();
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
@@ -123,6 +124,20 @@ public class page3 extends Fragment {
         else{
             life--;
             ((TextView)rootview.findViewById(R.id.life)).setText(""+life);
+            if(life<=0){
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                gameover fragment = new gameover(stage,this);
+                maxscore=Integer.max(maxscore,stage);
+                fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
+            }
         }
     }
+    public void pressRestart(){
+        Random rd = new Random();
+        l=2;stage=1;life=3;
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
+        fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
+    }
+
 }
