@@ -1,35 +1,32 @@
 package com.example.tabwithpv2;
 
+import static android.view.ViewGroup.LayoutParams.*;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.text.Layout;
+import androidx.gridlayout.widget.GridLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.GridLayout;
+//import android.widget.GridLayout;
+import android.widget.Button;
+import android.widget.GridLayout.LayoutParams;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.example.tabwithpv2.databinding.FragmentPage2Binding;
-import com.example.tabwithpv2.databinding.FragmentPage3Binding;
-
-import java.util.ArrayList;
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link page3#newInstance} factory method to
+ * Use the {@link gamegrid#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class page3 extends Fragment {
+public class gamegrid extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,10 +36,9 @@ public class page3 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    FragmentPage3Binding binding;
-    int sz;
-    public page3() {
-
+    int l=10,x=2,y=2;
+    public gamegrid() {
+        // Required empty public constructor
     }
 
     /**
@@ -51,11 +47,11 @@ public class page3 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment page3.
+     * @return A new instance of fragment gamegrid.
      */
     // TODO: Rename and change types and number of parameters
-    public static page3 newInstance(String param1, String param2) {
-        page3 fragment = new page3();
+    public static gamegrid newInstance(String param1, String param2) {
+        gamegrid fragment = new gamegrid();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,30 +72,35 @@ public class page3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootview = inflater.inflate(R.layout.fragment_page3, container, false);
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        View rootview = inflater.inflate(R.layout.fragment_gamegrid, container, false);
+        GridLayout grid = rootview.findViewById(R.id.grid);
+        if(grid==null) Toast.makeText(getContext(),"shit",Toast.LENGTH_SHORT).show();
+        grid.setColumnCount(l);
+        grid.setRowCount(l);
         Point pt = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getRealSize(pt);
-        int csz = (int)((float)pt.x*0.9);
 
+        LinearLayout.LayoutParams params;
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(csz,csz);
-        rootview.findViewById(R.id.gridcontainer).setLayoutParams(params);
-
-        ToggleButton tgbtn = rootview.findViewById(R.id.tgbtn);
-        tgbtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                LinearLayout grid = rootview.findViewById(R.id.outside);
-                if (isChecked) {
-                    grid.setBackgroundColor(getResources().getColor(R.color.black));
-                } else {
-                    grid.setBackgroundColor(getResources().getColor(R.color.white));
+        int sz = (int)(((float)pt.x)*0.9);
+        int cellsz =(int)(((float)(sz-10*(l+1)))/l);
+        params = new LinearLayout.LayoutParams(cellsz,cellsz);
+        params.setMargins(5,5,5,5);
+        params.weight=1;
+        Toast.makeText(getContext(),""+grid.getMeasuredWidth(),Toast.LENGTH_SHORT).show();
+        //LayoutParams layoutParams = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
+        for(int i=1;i<=l;i++){
+            for(int j=1;j<=l;j++){
+                Button v = new Button(getContext());
+                v.setBackgroundColor(Color.parseColor("#00ff00"));
+                if(i==x&&j==y){
+                    v.setBackgroundColor(Color.parseColor("#000000"));
                 }
+                v.setLayoutParams(params);
+
+                grid.addView(v);
             }
-        });
-        gamegrid fragment = new gamegrid();
-        fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
+        }
         return rootview;
     }
-
 }

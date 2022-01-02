@@ -16,13 +16,17 @@
 
 
     <LinearLayout
+        android:id="@+id/bigly"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -75,24 +79,29 @@
             </LinearLayout>
 
         </LinearLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/page3RecyclerViewId"
-                android:isScrollContainer="false"
-                android:layout_gravity="center"
+            android:layout_weight="8"
+            android:id="@+id/outside"
+            android:layout_gravity="center"
+            android:gravity="center"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/gridcontainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+                android:layout_gravity="center"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"></androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
         <ToggleButton
-            android:id="@+id/checkBox"
+            android:id="@+id/tgbtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:text="CheckBox" />
 

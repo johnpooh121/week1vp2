@@ -3,22 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/activity_game4.xml" value="0.2869791666666667" />
+        <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/activity_game9.xml" value="0.2869791666666667" />
         <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/activity_main.xml" value="0.15677083333333333" />
         <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/activity_pic_focus.xml" value="0.12447916666666667" />
+        <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/cell_layout.xml" value="0.1" />
         <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/contact_component.xml" value="0.17135416666666667" />
+        <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/fragment_gamegrid.xml" value="0.278125" />
         <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/fragment_page1.xml" value="0.63125" />
         <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/fragment_page2.xml" value="0.17135416666666667" />
-        <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/fragment_page3.xml" value="0.15677083333333333" />
+        <entry key="..\:/Users/johnp/AndroidStudioProjects/tabwithpv2/app/src/main/res/layout/fragment_page3.xml" value="0.22" />
         <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.16574074074074074" />
         <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/layout/activity_human_add.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/layout/activity_main.xml" value="0.24930491195551435" />
         <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/layout/activity_main2.xml" value="0.18478260869565216" />
-        <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/layout/cell_layout.xml" value="0.2046875" />
         <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/layout/contact_component.xml" value="0.2046875" />
         <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/layout/fragment_page1.xml" value="0.2046875" />
         <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/layout/fragment_page2.xml" value="0.2046875" />
-        <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/layout/fragment_page3.xml" value="0.22" />
         <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/layout/pic_layout.xml" value="0.20104166666666667" />
         <entry key="..\:/Users/wnsdu/AndroidStudioProjects/week1vp2/app/src/main/res/layout/test.xml" value="0.2046875" />
       </map>
