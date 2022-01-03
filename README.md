@@ -18,7 +18,7 @@
 |:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/86216960/147900147-c7a023d4-ec8c-4206-b1b6-a5b5d54a64e4.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900151-bed62847-0a8a-4f08-97d2-c86c2656ace4.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900160-afda13f4-5ab9-4267-ade2-5fe48d3fd608.png" width="200" />|
 
-# 기능설명
+### 기능설명
 갤러리의 사진을 누르면 새 액티비티가 실행되어 전체화면으로 누른 사진을 볼 수 있다. 또한 전체화면 상태에서 드래그로 줌인/줌아웃이 가능하다.
 아래의 + 버튼을 누르면 새 사진을 추가할 수 있으며 다중선택이 가능하다
 
