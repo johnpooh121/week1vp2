@@ -13,7 +13,7 @@
 |First Image|Second Image|Third Image|
 |:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/86216960/147900147-c7a023d4-ec8c-4206-b1b6-a5b5d54a64e4.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900151-bed62847-0a8a-4f08-97d2-c86c2656ace4.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900160-afda13f4-5ab9-4267-ade2-5fe48d3fd608.png" width="200" />
-
+ㅇㅇ
 ## 탭 3) 절대색감 게임
 
 |First Image|Second Image|Third Image|Fourth Image|
