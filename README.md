@@ -7,9 +7,9 @@
 |:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/86216960/147900138-c61f22ff-3a7e-495b-b7a2-1ad86633744c.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900139-7f3f2f15-7f7c-453f-8a37-1ee6a273a987.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900423-7802bf4e-8d55-4312-94b5-fcbeaf6a9b36.png" width="200"/>
  
- ### JSON 형식을 이용해서 임의의 연락처 데이터를 구축하였고 이를 받아와 읽은 뒤 ListView를 통해 화면에 출력하였습니다. 
- ### 연락처를 누르면 해당 연락처에 대한 세부 정보를 포함한 화면이 출력됩니다.
- ### 오른쪽 밑에 floatingbutton을 클릭하면 연락처를 추가할 수 있는 화면이 나오고 전화번호와 이름 모두를 입력해야 추가하기 버튼이 반응합니다.
+ ##### JSON 형식을 이용해서 임의의 연락처 데이터를 구축하였고 이를 받아와 읽은 뒤 ListView를 통해 화면에 출력하였습니다. 
+ ##### 연락처를 누르면 해당 연락처에 대한 세부 정보를 포함한 화면이 출력됩니다.
+ ##### 오른쪽 밑에 floatingbutton을 클릭하면 연락처를 추가할 수 있는 화면이 나오고 전화번호와 이름 모두를 입력해야 추가하기 버튼이 반응합니다.
 
 
 ## 탭 2) 갤러리
