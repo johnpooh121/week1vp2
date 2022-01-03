@@ -7,6 +7,7 @@
 |:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/86216960/147900138-c61f22ff-3a7e-495b-b7a2-1ad86633744c.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900139-7f3f2f15-7f7c-453f-8a37-1ee6a273a987.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900423-7802bf4e-8d55-4312-94b5-fcbeaf6a9b36.png" width="200"/>
  
+### 기능설명
  ##### JSON 형식을 이용해서 임의의 연락처 데이터를 구축하였고 이를 받아와 읽은 뒤 ListView를 통해 화면에 출력하였습니다. 
  ##### 연락처를 누르면 해당 연락처에 대한 세부 정보를 포함한 화면이 출력됩니다.
  ##### 오른쪽 밑에 floatingbutton을 클릭하면 연락처를 추가할 수 있는 화면이 나오고 전화번호와 이름 모두를 입력해야 추가하기 버튼이 반응합니다.
@@ -19,8 +20,9 @@
 |<img src="https://user-images.githubusercontent.com/86216960/147900147-c7a023d4-ec8c-4206-b1b6-a5b5d54a64e4.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900151-bed62847-0a8a-4f08-97d2-c86c2656ace4.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900160-afda13f4-5ab9-4267-ade2-5fe48d3fd608.png" width="200" />|
 
 ### 기능설명
-갤러리의 사진을 누르면 새 액티비티가 실행되어 전체화면으로 누른 사진을 볼 수 있다. 또한 전체화면 상태에서 드래그로 줌인/줌아웃이 가능하다.
-아래의 + 버튼을 누르면 새 사진을 추가할 수 있으며 다중선택이 가능하다
+##### 갤러리의 사진을 누르면 새 액티비티가 실행되어 전체화면으로 누른 사진을 볼 수 있습니다.
+##### 전체화면 상태에서 드래그로 줌인/줌아웃이 가능합니다.
+##### 아래의 + 버튼을 누르면 새 사진을 추가할 수 있으며 다중선택이 가능합니다.
 
 |First Image|Second Image|Third Image|
 |:-:|:-:|:-:|
