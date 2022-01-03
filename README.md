@@ -8,4 +8,4 @@
 
 |First Image|Second Image|
 |:-:|:-:|
-|![First Image](https://user-images.githubusercontent.com/86216960/147900138-c61f22ff-3a7e-495b-b7a2-1ad86633744c.png)|![Second Image](https://user-images.githubusercontent.com/86216960/147900138-c61f22ff-3a7e-495b-b7a2-1ad86633744c.png)|
+|<img src="https://user-images.githubusercontent.com/86216960/147900138-c61f22ff-3a7e-495b-b7a2-1ad86633744c.png" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/86216960/147900138-c61f22ff-3a7e-495b-b7a2-1ad86633744c.png" width="200" height="400"/>|
