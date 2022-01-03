@@ -30,7 +30,7 @@
 
 ## 탭 3) 절대색감 게임
 
-|Level 1|Level 2||Level 9(Max)|Game Over| 
+|Level 1|Level 2|Level 9(Max)|Game Over| 
 |:-:|:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/86216960/147900163-c38f1132-4931-411b-8a69-c59b1e2b8aa0.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900165-f67810fe-2f91-434d-bf92-4a9547fdb10a.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900146-1a6914ff-a3eb-48ae-9b22-169c8d8eb4e5.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900413-da977f99-9676-416f-866e-d4f0ea926f4d.png" width="200" />
 
