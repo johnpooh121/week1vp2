@@ -116,7 +116,7 @@ public class gamegrid extends Fragment {
         int R = rd.nextInt(256);
         int G = rd.nextInt(256);
         int B = rd.nextInt(256);
-        float range=Integer.max((25-stg/5),8);
+        float range=Integer.max((25-stg/4),8);
         int theta =myrd(-180,180);
         int alpha =myrd(-90,90);
         int dr=(int)(range*Math.sin(Math.toRadians(alpha)));
