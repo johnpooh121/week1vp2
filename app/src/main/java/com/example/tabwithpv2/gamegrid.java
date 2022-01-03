@@ -82,8 +82,8 @@ public class gamegrid extends Fragment {
     }
 
     public int change(int x,int d){
-        if(x+d>255) return 255;
-        if(x+d<0) return 0;
+        if(x+d>255) return x-d;
+        if(x+d<0) return x-d;
         return x+d;
     }
     public int myrd(int l,int r){
