@@ -129,9 +129,15 @@ public class page3 extends Fragment {
                 }
             }
         });
-        Random rd = new Random();
-        gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
-        fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
+        if(life>0) {
+            Random rd = new Random();
+            gamegrid fragment = new gamegrid(l, rd.nextInt(l) + 1, rd.nextInt(l) + 1, this);
+            fragmentManager.beginTransaction().replace(R.id.gridcontainer, fragment).commit();
+        }
+        else{
+            gameover fragment = new gameover(stage,this);
+            fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
+        }
         return rootview;
     }
 
