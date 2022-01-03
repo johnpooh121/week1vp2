@@ -108,7 +108,7 @@ public class page3 extends Fragment {
         ((TextView)rootview.findViewById(R.id.stage)).setText(""+stage);
         l = calculatel(stage);
 
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         Point pt = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getRealSize(pt);
         int csz = (int)((float)pt.x*0.95);
@@ -129,6 +129,7 @@ public class page3 extends Fragment {
                 }
             }
         });
+
         if(life>0) {
             Random rd = new Random();
             gamegrid fragment = new gamegrid(l, rd.nextInt(l) + 1, rd.nextInt(l) + 1, this);
@@ -138,6 +139,10 @@ public class page3 extends Fragment {
             gameover fragment = new gameover(stage,this);
             fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
         }
+//        Random rd = new Random();
+//        gamegrid fragment = new gamegrid(l, rd.nextInt(l) + 1, rd.nextInt(l) + 1, this);
+//        ConstraintLayout gc = rootview.findViewById(R.id.gridcontainer);
+//        if(gc!=null)fragmentManager.beginTransaction().replace(R.id.gridcontainer, fragment).commit();
         return rootview;
     }
 
@@ -162,7 +167,7 @@ public class page3 extends Fragment {
 
             l = calculatel(stage);
             Random rd = new Random();
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentManager fragmentManager = getChildFragmentManager();
             gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
             fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
         }
@@ -176,7 +181,7 @@ public class page3 extends Fragment {
 
             ((TextView)rootview.findViewById(R.id.life)).setText(""+life);
             if(life<=0){
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentManager fragmentManager = getChildFragmentManager();
                 gameover fragment = new gameover(stage,this);
 
 
@@ -188,7 +193,7 @@ public class page3 extends Fragment {
     public void pressRestart(){
         Random rd = new Random();
         l=2;stage=1;life=3;
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
         fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
         SharedPreferences sharedPreferences;
