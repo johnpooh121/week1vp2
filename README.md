@@ -15,7 +15,7 @@
 
 ## 탭 2) 갤러리
 
-|First Image|Second Image|Third Image|
+|First Screen|Full Screen|Zoom In|
 |:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/86216960/147900147-c7a023d4-ec8c-4206-b1b6-a5b5d54a64e4.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900151-bed62847-0a8a-4f08-97d2-c86c2656ace4.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900160-afda13f4-5ab9-4267-ade2-5fe48d3fd608.png" width="200" />|
 
@@ -24,7 +24,7 @@
 ##### 전체화면 상태에서 드래그로 줌인/줌아웃이 가능합니다.
 ##### 아래의 + 버튼을 누르면 새 사진을 추가할 수 있으며 다중선택이 가능합니다.
 
-|First Image|Second Image|Third Image|
+|Selection Mode|Multiple Choice|New image loaded|
 |:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/96766204/147900870-b13ad3f4-edc7-4439-a146-37720536c98c.png" width="200" />|<img src="https://user-images.githubusercontent.com/96766204/147900851-b71057ac-a193-4166-bf13-c46a3d20c01d.png" width="200" />|<img src="https://user-images.githubusercontent.com/96766204/147900852-00ef4e43-4457-4d7c-b179-6bf1c9af8289.png" width="200" />|
 
