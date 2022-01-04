@@ -67,6 +67,10 @@ Tab3 - 절대 색감 게임
 |:-:|:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/86216960/148019261-80812f74-724a-4261-bfd4-453695a25bc5.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019264-3a3176c7-ded1-499a-b983-91b13719b37e.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019265-6fa4b04d-2b73-4217-8fcd-1ab560091b48.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019260-cacdab74-2720-43f9-9f5f-0583e3e62c8d.png" width="200" />|
 
+|Debug Mode|Debug Mode2|Continue|
+|:-:|:-:|:-:|
+|<img src="https://user-images.githubusercontent.com/86216960/148019267-91a3d51a-bb24-456f-936c-8a423057637d.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019257-b049c7b2-0d39-4efb-bae3-15c6c6b6ed37.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019260-cacdab74-2720-43f9-9f5f-0583e3e62c8d.png" width="200" />|
+
 ### 겪었던 시행착오, 기술
 ##### stage가 올라갈 때마다 격자의 개수를 늘리고 각 격자의 마진과 크기를 관리하는데서 많은 시행착오를 겪다가 GridView로 구현하였습니다.
 ##### 게임의 phase를 게임 화면과 restart 화면으로 나누어 각각 프래그먼트로 관리하면서 프래그먼트의 생명주기에 대한 기초적인 지식을 쌓을 수 있었습니다.
