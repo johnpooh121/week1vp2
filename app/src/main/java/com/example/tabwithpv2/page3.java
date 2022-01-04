@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Layout;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,12 +47,47 @@ public class page3 extends Fragment {
     FragmentPage3Binding binding;
     View rootview;
     int sz,stage,life,l,maxscore=0;
+    String bg,col;
     public page3() {
         stage=1;life=3;l=2;
     }
 
     int calculatel(int stage){
         return Integer.min(10,2+stage/5);
+    }
+    public String conv(int x){
+        x=x%256;
+        return Integer.toHexString(x/16)+""+Integer.toHexString(x%16);
+    }
+
+    public int change(int x,int d){
+        if(x+d>255) return x-d;
+        if(x+d<0) return x-d;
+        return x+d;
+    }
+    public int myrd(int l,int r){
+        Random rd =new Random();
+        int k = rd.nextInt(r-l+1)+l;
+        return k;
+    }
+
+    public Pair<String,String> colorgen(){
+        Random rd = new Random();
+        int R = rd.nextInt(256);
+        int G = rd.nextInt(256);
+        int B = rd.nextInt(256);
+        float range=Integer.max((25-stage/4),8);
+        int theta =myrd(-180,180);
+        int alpha =myrd(-90,90);
+        int dr=(int)(range*Math.sin(Math.toRadians(alpha)));
+        int dg =(int)(range*Math.cos(Math.toRadians(alpha)*Math.sin(Math.toRadians(theta))));
+        int db =(int)(range*Math.cos(Math.toRadians(alpha)*Math.cos(Math.toRadians(theta))));
+        int nR=change(R,dr),nG=change(G,dg),nB=change(B,db);
+
+        String bg = "#"+conv(R)+conv(G)+conv(B);
+        String col = bg;
+        col = "#"+conv(nR)+conv(nG)+conv(nB);
+        return new Pair(bg,col);
     }
 
     /**
@@ -132,7 +168,10 @@ public class page3 extends Fragment {
 
         if(life>0) {
             Random rd = new Random();
-            gamegrid fragment = new gamegrid(l, rd.nextInt(l) + 1, rd.nextInt(l) + 1, this);
+
+            Pair<String,String> pr = colorgen();
+            bg= pr.first;col=pr.second;
+            gamegrid fragment = new gamegrid(l, rd.nextInt(l) + 1, rd.nextInt(l) + 1, this,bg,col);
             fragmentManager.beginTransaction().replace(R.id.gridcontainer, fragment).commit();
         }
         else{
@@ -168,7 +207,9 @@ public class page3 extends Fragment {
             l = calculatel(stage);
             Random rd = new Random();
             FragmentManager fragmentManager = getChildFragmentManager();
-            gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
+            Pair<String,String> pr = colorgen();
+            bg= pr.first;col=pr.second;
+            gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this,bg,col);
             fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
         }
         else{
@@ -194,7 +235,9 @@ public class page3 extends Fragment {
         Random rd = new Random();
         l=2;stage=1;life=3;
         FragmentManager fragmentManager = getChildFragmentManager();
-        gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this);
+        Pair<String,String> pr = colorgen();
+        bg= pr.first;col=pr.second;
+        gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this,bg,col);
         fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
         SharedPreferences sharedPreferences;
         sharedPreferences = getContext().getSharedPreferences("maxscore",getContext().MODE_PRIVATE);
