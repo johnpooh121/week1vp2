@@ -48,7 +48,7 @@ public class page3 extends Fragment {
     private String mParam2;
     FragmentPage3Binding binding;
     View rootview;
-    int sz,stage,life,l,maxscore=0,ansx=0,ansy=0;
+    int sz,stage,life=3,l,maxscore_easy=0,maxscore_hard=0,ansx=0,ansy=0;
     Boolean isEasy=true;
     String bg,col;
     public page3() {
@@ -151,9 +151,11 @@ public class page3 extends Fragment {
 
         rootview = inflater.inflate(R.layout.fragment_page3, container, false);
 
-        maxscore = sharedPreferences.getInt("maxscore",1);
+        maxscore_easy = sharedPreferences.getInt("maxscore_easy",1);
+        maxscore_hard = sharedPreferences.getInt("maxscore_hard",1);
         life = sharedPreferences.getInt("life",999);
         stage = sharedPreferences.getInt("stage",0);
+        isEasy = sharedPreferences.getBoolean("isEasy",true);
 
         if(life == 999){
             life = 3;
@@ -163,7 +165,14 @@ public class page3 extends Fragment {
         }
 
 
-        ((TextView)rootview.findViewById(R.id.maxscore)).setText(""+maxscore);
+        if(isEasy){
+            ((TextView)rootview.findViewById(R.id.maxscore)).setText(""+maxscore_easy);
+            ((TextView)rootview.findViewById(R.id.mode)).setText("Stage (Easy)");
+        }
+        else {
+            ((TextView)rootview.findViewById(R.id.maxscore)).setText(""+maxscore_hard);
+            ((TextView)rootview.findViewById(R.id.mode)).setText("Stage (Hard)");
+        }
         ((TextView)rootview.findViewById(R.id.life)).setText(""+life);
         ((TextView)rootview.findViewById(R.id.stage)).setText(""+stage);
         l = calculatel(stage);
@@ -232,15 +241,26 @@ public class page3 extends Fragment {
             stage++;
             ((TextView)rootview.findViewById(R.id.stage)).setText(""+stage);
 
-            maxscore = sharedPreferences.getInt("maxscore",1);
-            if(life>0) {
-                maxscore = Integer.max(maxscore, stage);
-                editor.putInt("maxscore", maxscore);
+            if(isEasy) {
+                maxscore_easy = sharedPreferences.getInt("maxscore", 1);
+                if (life > 0) {
+                    maxscore_easy = Integer.max(maxscore_easy, stage);
+                    editor.putInt("maxscore_easy", maxscore_easy);
+                }
+                ((TextView)rootview.findViewById(R.id.maxscore)).setText(""+maxscore_easy);
+            }
+            else {
+                maxscore_hard = sharedPreferences.getInt("maxscore_hard", 1);
+                if (life > 0) {
+                    maxscore_hard = Integer.max(maxscore_hard, stage);
+                    editor.putInt("maxscore_hard", maxscore_hard);
+                }
+                ((TextView)rootview.findViewById(R.id.maxscore)).setText(""+maxscore_hard);
             }
             editor.putInt("stage",stage);
             editor.putInt("life",life);
+            editor.putBoolean("isEasy",isEasy);
             editor.commit();
-            ((TextView)rootview.findViewById(R.id.maxscore)).setText(""+maxscore);
 
             l = calculatel(stage);
             Random rd = new Random();
@@ -253,10 +273,9 @@ public class page3 extends Fragment {
         }
         else{
             life--;
-
-            maxscore = sharedPreferences.getInt("maxscore",1);
             editor.putInt("life",life);
             editor.putInt("stage",stage);
+            editor.putBoolean("isEasy",isEasy);
             editor.commit();
 
             ((TextView)rootview.findViewById(R.id.life)).setText(""+life);
@@ -289,10 +308,19 @@ public class page3 extends Fragment {
 
         editor.putInt("stage",stage);
         editor.putInt("life",life);
+        editor.putBoolean("isEasy",isEasy);
         editor.commit();
 
         ((TextView)rootview.findViewById(R.id.stage)).setText(""+1);
         ((TextView)rootview.findViewById(R.id.life)).setText(""+3);
+        if(isEasy){
+            ((TextView)rootview.findViewById(R.id.maxscore)).setText(""+maxscore_easy);
+            ((TextView)rootview.findViewById(R.id.mode)).setText("Stage (Easy)");
+        }
+        else {
+            ((TextView)rootview.findViewById(R.id.maxscore)).setText(""+maxscore_hard);
+            ((TextView)rootview.findViewById(R.id.mode)).setText("Stage (Hard)");
+        }
         Button cont = rootview.findViewById(R.id.btn_continue);
         cont.setVisibility(View.GONE);
         Button ans = rootview.findViewById(R.id.btn_answer);

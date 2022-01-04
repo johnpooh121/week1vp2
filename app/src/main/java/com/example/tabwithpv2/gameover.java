@@ -68,10 +68,17 @@ public class gameover extends Fragment {
         TextView tv = rootview.findViewById(R.id.txtid);
         tv.setText(stg+"단계에서 종료되었습니다.");
 
-        Button btn = rootview.findViewById(R.id.restart);
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button btn_easy = rootview.findViewById(R.id.easy);
+        btn_easy.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
+                parent.isEasy=true;
+                parent.pressRestart();
 
+            } });
+        Button btn_hard = rootview.findViewById(R.id.hard);
+        btn_hard.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                parent.isEasy=false;
                 parent.pressRestart();
 
             } });

@@ -38,7 +38,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Stage"
+                    android:id="@+id/mode"
+                    android:text="Stage (Easy)"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textAlignment="center" />
