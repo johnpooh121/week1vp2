@@ -70,7 +70,7 @@ Tab3 - 절대 색감 게임
 ##### life가 0이 되어 게임이 종료되면 아래에 "Continue", "눌러보세요" 버튼이 생기고, 배경색이 기본 색으로 변하게 됩니다.
 ##### "눌러보세요" 버튼을 한번 클릭하면 정답의 위치, 한번 더 클릭하면 배경 색(BG)과 바뀐 색(COL)의 RGB 값을 볼 수 있습니다.
 ##### Continue 버튼을 클릭하면 시작 화면이 나오며 EASY MODE와 HARD MODE를 선택해 새 게임을 시작할 수 있습니다.
-
+##### Easy Mode에서와 다르게 Hard Mode에서는 BG와 COL간의 차이가 더 적어집니다.
 |Debug Mode|Debug Mode2|Continue|
 |:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/86216960/148019267-91a3d51a-bb24-456f-936c-8a423057637d.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019257-b049c7b2-0d39-4efb-bae3-15c6c6b6ed37.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019260-cacdab74-2720-43f9-9f5f-0583e3e62c8d.png" width="200" />|
