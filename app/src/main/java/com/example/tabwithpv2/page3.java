@@ -254,7 +254,7 @@ public class page3 extends Fragment {
                 cont.setVisibility(View.VISIBLE);
                 Button ans = rootview.findViewById(R.id.btn_answer);
                 ans.setVisibility(View.VISIBLE);
-                ans.setText("row : "+ansx+" col : "+ansy);
+                ans.setText("row : "+ansx+"\ncol : "+ansy);
                 LinearLayout grid = rootview.findViewById(R.id.outside);
                 grid.setBackgroundColor(Color.parseColor(bg));
             }
