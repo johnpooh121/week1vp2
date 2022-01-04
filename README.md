@@ -69,4 +69,4 @@ Tab3 - 절대 색감 게임
 ##### 게임의 phase를 게임 화면과 restart 화면으로 나누어 각각 프래그먼트로 관리하면서 프래그먼트의 생명주기에 대한 기초적인 지식을 쌓을 수 있었습니다.
 ##### SHaredpreference를 사용해 stage, life, 최고 점수 등을 관리, 저장하였습니다.
 
-#### apk파일은 week1pv2/color_sense.apk 입니다
+#### apk파일은 week1pv2/app-debug.apk 입니다
