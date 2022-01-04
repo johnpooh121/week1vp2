@@ -65,7 +65,7 @@ Tab3 - 절대 색감 게임
 ##### 아래의 토글버튼을 누르면 배경색을 검은색 또는 흰색으로 전환할 수 있습니다.
 |Game over|answer position|color difference|Continue|
 |:-:|:-:|:-:|:-:|
-|<img src="https://user-images.githubusercontent.com/86216960/148014356-adf32d5d-5214-4c8f-b622-91b05ef6ff18.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148014361-0c7925ef-a09d-48a4-a2fe-5f32599c94d3.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148014372-3324f967-ca22-40f3-8292-c5571237ff4f.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019260-cacdab74-2720-43f9-9f5f-0583e3e62c8d.png" width="200" />|
+|<img src="https://user-images.githubusercontent.com/86216960/148019261-80812f74-724a-4261-bfd4-453695a25bc5.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019264-3a3176c7-ded1-499a-b983-91b13719b37e.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019265-6fa4b04d-2b73-4217-8fcd-1ab560091b48.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019260-cacdab74-2720-43f9-9f5f-0583e3e62c8d.png" width="200" />|
 
 ### 겪었던 시행착오, 기술
 ##### stage가 올라갈 때마다 격자의 개수를 늘리고 각 격자의 마진과 크기를 관리하는데서 많은 시행착오를 겪다가 GridView로 구현하였습니다.
