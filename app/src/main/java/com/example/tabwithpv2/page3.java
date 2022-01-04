@@ -49,6 +49,7 @@ public class page3 extends Fragment {
     FragmentPage3Binding binding;
     View rootview;
     int sz,stage,life,l,maxscore=0,ansx=0,ansy=0;
+    Boolean isEasy=true;
     String bg,col;
     public page3() {
         stage=1;life=3;l=2;
@@ -74,25 +75,29 @@ public class page3 extends Fragment {
     }
 
 //    public Pair<String,String> colorgen(){
-    public void colorgen(){
+    public void colorgen() {
         Random rd = new Random();
         int R = rd.nextInt(256);
         int G = rd.nextInt(256);
         int B = rd.nextInt(256);
-//        float range=Integer.max((25-stage/4),8);
-//        int theta =myrd(-180,180);
-//        int alpha =myrd(-90,90);
-//        int dr=(int)(range*Math.sin(Math.toRadians(alpha)));
-//        int dg =(int)(range*Math.cos(Math.toRadians(alpha)*Math.sin(Math.toRadians(theta))));
-//        int db =(int)(range*Math.cos(Math.toRadians(alpha)*Math.cos(Math.toRadians(theta))));
-        int range=Integer.max((25-stage/4),8);
-        int dr = myrd(-range,range);
-        range-=Math.abs(dr);
-        int dg = myrd(-range,range);
-        range-=Math.abs(dg);
-        int db = myrd(-range,range);
-        int nR=change(R,dr),nG=change(G,dg),nB=change(B,db);
+        int dr, dg, db;
+        int range = Integer.max((25 - stage / 4), 8);
+        if (isEasy) {
+            int theta = myrd(-180, 180);
+            int alpha = myrd(-90, 90);
+            dr = (int) (range * Math.sin(Math.toRadians(alpha)));
+            dg = (int) (range * Math.cos(Math.toRadians(alpha) * Math.sin(Math.toRadians(theta))));
+            db = (int) (range * Math.cos(Math.toRadians(alpha) * Math.cos(Math.toRadians(theta))));
+        }
+        else{
+            dr = myrd(-range, range);
+            range -= Math.abs(dr);
+            dg = myrd(-range, range);
+            range -= Math.abs(dg);
+            db = myrd(-range, range);
+        }
 
+        int nR = change(R, dr), nG = change(G, dg), nB = change(B, db);
         bg = "#"+conv(R)+conv(G)+conv(B);
         col = bg;
         col = "#"+conv(nR)+conv(nG)+conv(nB);
