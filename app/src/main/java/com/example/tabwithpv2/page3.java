@@ -2,6 +2,7 @@ package com.example.tabwithpv2;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
@@ -46,7 +48,7 @@ public class page3 extends Fragment {
     private String mParam2;
     FragmentPage3Binding binding;
     View rootview;
-    int sz,stage,life,l,maxscore=0;
+    int sz,stage,life,l,maxscore=0,ansx=0,ansy=0;
     String bg,col;
     public page3() {
         stage=1;life=3;l=2;
@@ -159,8 +161,6 @@ public class page3 extends Fragment {
         Point pt = new Point();
         getActivity().getWindowManager().getDefaultDisplay().getRealSize(pt);
         int csz = (int)((float)pt.x*0.95);
-
-
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(csz,csz);
         rootview.findViewById(R.id.gridcontainer).setLayoutParams(params);
         LinearLayout grid = rootview.findViewById(R.id.outside);
@@ -177,6 +177,17 @@ public class page3 extends Fragment {
             }
         });
 
+        Button cont = rootview.findViewById(R.id.btn_continue);
+        page3 me=this;
+        cont.setOnClickListener(new View.OnClickListener() {
+
+            @Override public void onClick(View v) {
+                FragmentManager fragmentManager = getChildFragmentManager();
+
+                gameover fragment = new gameover(stage,me);
+                fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
+            } });
+
         if(life>0) {
             Random rd = new Random();
             bg= sharedPreferences.getString("bg","#000000");col=sharedPreferences.getString("col","#FFFFFF");
@@ -184,8 +195,8 @@ public class page3 extends Fragment {
                 colorgen();
                 bg= sharedPreferences.getString("bg","#000000");col=sharedPreferences.getString("col","#FFFFFF");
             }
-
-            gamegrid fragment = new gamegrid(l, rd.nextInt(l) + 1, rd.nextInt(l) + 1, this,bg,col);
+            ansx = rd.nextInt(l) + 1;ansy=rd.nextInt(l) + 1;
+            gamegrid fragment = new gamegrid(l, ansx, ansy, this,bg,col);
             fragmentManager.beginTransaction().replace(R.id.gridcontainer, fragment).commit();
         }
         else{
@@ -211,8 +222,10 @@ public class page3 extends Fragment {
             ((TextView)rootview.findViewById(R.id.stage)).setText(""+stage);
 
             maxscore = sharedPreferences.getInt("maxscore",1);
-            maxscore=Integer.max(maxscore,stage);
-            editor.putInt("maxscore",maxscore);
+            if(life>0) {
+                maxscore = Integer.max(maxscore, stage);
+                editor.putInt("maxscore", maxscore);
+            }
             editor.putInt("stage",stage);
             editor.putInt("life",life);
             editor.commit();
@@ -223,7 +236,8 @@ public class page3 extends Fragment {
             FragmentManager fragmentManager = getChildFragmentManager();
             colorgen();
             bg= sharedPreferences.getString("bg","#000000");col=sharedPreferences.getString("col","#FFFFFF");
-            gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this,bg,col);
+            ansx = rd.nextInt(l) + 1;ansy=rd.nextInt(l) + 1;
+            gamegrid fragment = new gamegrid(l, ansx, ansy, this,bg,col);
             fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
         }
         else{
@@ -236,10 +250,13 @@ public class page3 extends Fragment {
 
             ((TextView)rootview.findViewById(R.id.life)).setText(""+life);
             if(life<=0){
-                FragmentManager fragmentManager = getChildFragmentManager();
-
-                gameover fragment = new gameover(stage,this);
-                fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
+                Button cont = rootview.findViewById(R.id.btn_continue);
+                cont.setVisibility(View.VISIBLE);
+                Button ans = rootview.findViewById(R.id.btn_answer);
+                ans.setVisibility(View.VISIBLE);
+                ans.setText("row : "+ansx+" col : "+ansy);
+                LinearLayout grid = rootview.findViewById(R.id.outside);
+                grid.setBackgroundColor(Color.parseColor(bg));
             }
         }
     }
@@ -252,7 +269,8 @@ public class page3 extends Fragment {
         FragmentManager fragmentManager = getChildFragmentManager();
         colorgen();
         bg= sharedPreferences.getString("bg","#000000");col=sharedPreferences.getString("col","#FFFFFF");
-        gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this,bg,col);
+        ansx = rd.nextInt(l) + 1;ansy=rd.nextInt(l) + 1;
+        gamegrid fragment = new gamegrid(l, ansx, ansy, this,bg,col);
         fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
 
         editor.putInt("stage",stage);
@@ -261,6 +279,12 @@ public class page3 extends Fragment {
 
         ((TextView)rootview.findViewById(R.id.stage)).setText(""+1);
         ((TextView)rootview.findViewById(R.id.life)).setText(""+3);
+        Button cont = rootview.findViewById(R.id.btn_continue);
+        cont.setVisibility(View.GONE);
+        Button ans = rootview.findViewById(R.id.btn_answer);
+        ans.setVisibility(View.GONE);
+        LinearLayout grid = rootview.findViewById(R.id.outside);
+        grid.setBackgroundColor(getResources().getColor(R.color.white));
     }
 
 }

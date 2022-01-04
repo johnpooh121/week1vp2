@@ -136,6 +136,7 @@
                 android:backgroundTint="@color/text"
                 android:textColor="@color/black"
                 android:text="Continue"
+                android:visibility="gone"
                 android:layout_weight="1"/>
 
             <ToggleButton
@@ -152,6 +153,7 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/text"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="X = 3, Y = 6"
                 android:layout_weight="1"/>
 
