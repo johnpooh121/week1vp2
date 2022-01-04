@@ -63,9 +63,9 @@ Tab3 - 절대 색감 게임
 ##### life는 3이며 stage가 올라갈 때마다 격자의 개수가 늘어납니다.
 ##### 게임 도중 뒤로가기를 누르거나 강제종료되어도 다시 앱을 실행하면 stage와 최고점수, 남은 life가 저장되어 있습니다.
 ##### 아래의 토글버튼을 누르면 배경색을 검은색 또는 흰색으로 전환할 수 있습니다.
-|Game over|answer position|color difference|Continue|
-|:-:|:-:|:-:|:-:|
-|<img src="https://user-images.githubusercontent.com/86216960/148019261-80812f74-724a-4261-bfd4-453695a25bc5.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019264-3a3176c7-ded1-499a-b983-91b13719b37e.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019265-6fa4b04d-2b73-4217-8fcd-1ab560091b48.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019260-cacdab74-2720-43f9-9f5f-0583e3e62c8d.png" width="200" />|
+|Game over|answer position|color difference|
+|:-:|:-:|:-:|
+|<img src="https://user-images.githubusercontent.com/86216960/148019261-80812f74-724a-4261-bfd4-453695a25bc5.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019264-3a3176c7-ded1-499a-b983-91b13719b37e.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019265-6fa4b04d-2b73-4217-8fcd-1ab560091b48.png" width="200" />|
 
 |Debug Mode|Debug Mode2|Continue|
 |:-:|:-:|:-:|
