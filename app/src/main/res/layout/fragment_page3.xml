@@ -145,8 +145,10 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/text"
                 android:layout_weight="1"
-                android:text="CheckBox" />
-            <Button
+                android:textOff="white"
+                android:textOn="black"
+                />
+            <ToggleButton
                 android:layout_width="0dp"
                 android:id="@+id/btn_answer"
                 android:textColor="@color/black"
@@ -154,7 +156,6 @@
                 android:backgroundTint="@color/text"
                 android:gravity="center"
                 android:visibility="gone"
-                android:text="X = 3, Y = 6"
                 android:layout_weight="1"/>
 
         </LinearLayout>

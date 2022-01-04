@@ -252,9 +252,12 @@ public class page3 extends Fragment {
             if(life<=0){
                 Button cont = rootview.findViewById(R.id.btn_continue);
                 cont.setVisibility(View.VISIBLE);
-                Button ans = rootview.findViewById(R.id.btn_answer);
+                ToggleButton ans = rootview.findViewById(R.id.btn_answer);
+
+                ans.setTextOn("row : "+ansx+"\ncol : "+ansy);
+                ans.setTextOff("bg : "+bg+"\ncol : "+col);
+                ans.setText("눌러보세요");
                 ans.setVisibility(View.VISIBLE);
-                ans.setText("row : "+ansx+"\ncol : "+ansy);
                 LinearLayout grid = rootview.findViewById(R.id.outside);
                 grid.setBackgroundColor(Color.parseColor(bg));
             }
