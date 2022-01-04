@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Game Over"
+            android:text="Color Sense"
             android:textStyle="bold"
             android:textColor="@color/text"
             android:textSize="50dp" />
@@ -30,19 +30,29 @@
             android:textColor="@color/text"
             android:textStyle="bold"
             android:gravity="center_horizontal"
-            android:text="000단계에서 종료되었습니다."
+            android:text=" "
             android:id="@+id/txtid"
             android:textSize="20dp" />
 
         <Button
-            android:id="@+id/restart"
+            android:id="@+id/easy"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textColor="@color/buttontext"
             android:textStyle="bold"
             android:backgroundTint="@color/text"
-            android:text="restart" />
+            android:text="Easy Mode" />
+        <Button
+            android:id="@+id/hard"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/buttontext"
+            android:textStyle="bold"
+            android:backgroundTint="@color/text"
+            android:text="Hard Mode" />
+
 
     </LinearLayout>
 
