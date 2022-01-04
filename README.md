@@ -67,13 +67,21 @@ Tab3 - 절대 색감 게임
 |:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/86216960/148019261-80812f74-724a-4261-bfd4-453695a25bc5.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019264-3a3176c7-ded1-499a-b983-91b13719b37e.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019265-6fa4b04d-2b73-4217-8fcd-1ab560091b48.png" width="200" />|
 
+##### life가 0이 되어 게임이 종료되면 아래에 "Continue", "눌러보세요" 버튼이 생기고, 배경색이 기본 색으로 변하게 됩니다.
+##### "눌러보세요" 버튼을 한번 클릭하면 정답의 위치, 한번 더 클릭하면 배경 색(BG)과 바뀐 색(COL)의 RGB 값을 볼 수 있습니다.
+##### Continue 버튼을 클릭하면 시작 화면이 나오며 EASY MODE와 HARD MODE를 선택해 새 게임을 시작할 수 있습니다.
+
 |Debug Mode|Debug Mode2|Continue|
 |:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/86216960/148019267-91a3d51a-bb24-456f-936c-8a423057637d.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019257-b049c7b2-0d39-4efb-bae3-15c6c6b6ed37.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148019260-cacdab74-2720-43f9-9f5f-0583e3e62c8d.png" width="200" />|
 
+##### Life가 0이 되었을 때 Continue 버튼을 누르지 않고 Debug Mode에서 게임을 진행할 수 있도록 만들었습니다.
+##### Debug Mode에서는 stage가 계속 올라가지만 maxscore는 업데이트 되지 않습니다.
+
+
 ### 겪었던 시행착오, 기술
 ##### stage가 올라갈 때마다 격자의 개수를 늘리고 각 격자의 마진과 크기를 관리하는데서 많은 시행착오를 겪다가 GridView로 구현하였습니다.
 ##### 게임의 phase를 게임 화면과 restart 화면으로 나누어 각각 프래그먼트로 관리하면서 프래그먼트의 생명주기에 대한 기초적인 지식을 쌓을 수 있었습니다.
-##### SHaredpreference를 사용해 stage, life, 최고 점수 등을 관리, 저장하였습니다.
+##### Sharedpreference를 사용해 stage, life, 최고 점수,mode 등을 관리, 저장하였습니다.
 
-#### apk파일은 week1pv2/app-debug.apk 입니다
+#### apk파일은 week1pv2/color_sense_twomode.apk 입니다
