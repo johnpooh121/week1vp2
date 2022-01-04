@@ -53,9 +53,9 @@ Tab3 - 절대 색감 게임
 
 ## 탭 3) 절대색감 게임
 
-|Level 1|Level 2|Level 9(Max)|Game Over| 
-|:-:|:-:|:-:|:-:|
-|<img src="https://user-images.githubusercontent.com/86216960/147900163-c38f1132-4931-411b-8a69-c59b1e2b8aa0.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900165-f67810fe-2f91-434d-bf92-4a9547fdb10a.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900146-1a6914ff-a3eb-48ae-9b22-169c8d8eb4e5.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900413-da977f99-9676-416f-866e-d4f0ea926f4d.png" width="200" />
+|Level 1|Level 2|Level 9(Max)|
+|:-:|:-:|:-:|
+|<img src="https://user-images.githubusercontent.com/86216960/147900163-c38f1132-4931-411b-8a69-c59b1e2b8aa0.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900165-f67810fe-2f91-434d-bf92-4a9547fdb10a.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/147900146-1a6914ff-a3eb-48ae-9b22-169c8d8eb4e5.png" width="200" />|
 
 ### 기능
 ##### Color test(절대 색감)이라는 구글플레이스토어의 미니게임을 구현했습니다.
@@ -63,6 +63,9 @@ Tab3 - 절대 색감 게임
 ##### life는 3이며 stage가 올라갈 때마다 격자의 개수가 늘어납니다.
 ##### 게임 도중 뒤로가기를 누르거나 강제종료되어도 다시 앱을 실행하면 stage와 최고점수, 남은 life가 저장되어 있습니다.
 ##### 아래의 토글버튼을 누르면 배경색을 검은색 또는 흰색으로 전환할 수 있습니다.
+|Game over|answer position|color difference|Continue|
+|:-:|:-:|:-:|:-:|
+|<img src="https://user-images.githubusercontent.com/86216960/148014356-adf32d5d-5214-4c8f-b622-91b05ef6ff18.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148014361-0c7925ef-a09d-48a4-a2fe-5f32599c94d3.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148014372-3324f967-ca22-40f3-8292-c5571237ff4f.png" width="200" />|<img src="https://user-images.githubusercontent.com/86216960/148014355-7ac8c924-516e-4140-a879-45c5b36c77c5.png" width="200" />|
 
 ### 겪었던 시행착오, 기술
 ##### stage가 올라갈 때마다 격자의 개수를 늘리고 각 격자의 마진과 크기를 관리하는데서 많은 시행착오를 겪다가 GridView로 구현하였습니다.
