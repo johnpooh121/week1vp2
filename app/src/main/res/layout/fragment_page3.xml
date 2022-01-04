@@ -123,12 +123,41 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"></androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
-        <ToggleButton
-            android:id="@+id/tgbtn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:orientation="horizontal"
             android:layout_weight="1"
-            android:text="CheckBox" />
+            >
+            <Button
+                android:layout_width="0dp"
+                android:id="@+id/btn_continue"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/text"
+                android:textColor="@color/black"
+                android:text="Continue"
+                android:layout_weight="1"/>
+
+            <ToggleButton
+                android:id="@+id/tgbtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/text"
+                android:layout_weight="1"
+                android:text="CheckBox" />
+            <Button
+                android:layout_width="0dp"
+                android:id="@+id/btn_answer"
+                android:textColor="@color/black"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/text"
+                android:gravity="center"
+                android:text="X = 3, Y = 6"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 </FrameLayout>

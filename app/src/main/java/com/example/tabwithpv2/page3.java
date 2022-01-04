@@ -179,11 +179,6 @@ public class page3 extends Fragment {
 
         if(life>0) {
             Random rd = new Random();
-
-//            Pair<String,String> pr = colorgen();
-//            colorgen();
-//            bg= pr.first;col=pr.second;
-
             bg= sharedPreferences.getString("bg","#000000");col=sharedPreferences.getString("col","#FFFFFF");
             if(bg=="#000000" && col=="#FFFFFF"){
                 colorgen();
@@ -206,7 +201,7 @@ public class page3 extends Fragment {
 
     @SuppressLint("NewApi")
     public void handletouch(Boolean iscorrect){
-        //Toast.makeText(getContext(),""+iscorrect,Toast.LENGTH_SHORT).show();
+
         SharedPreferences sharedPreferences;
         sharedPreferences = getContext().getSharedPreferences("maxscore",getContext().MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -226,9 +221,7 @@ public class page3 extends Fragment {
             l = calculatel(stage);
             Random rd = new Random();
             FragmentManager fragmentManager = getChildFragmentManager();
-            //            Pair<String,String> pr = colorgen();
             colorgen();
-//            bg= pr.first;col=pr.second;
             bg= sharedPreferences.getString("bg","#000000");col=sharedPreferences.getString("col","#FFFFFF");
             gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this,bg,col);
             fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
@@ -246,9 +239,6 @@ public class page3 extends Fragment {
                 FragmentManager fragmentManager = getChildFragmentManager();
 
                 gameover fragment = new gameover(stage,this);
-
-
-
                 fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
             }
         }
@@ -260,9 +250,7 @@ public class page3 extends Fragment {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         l=2;stage=1;life=3;
         FragmentManager fragmentManager = getChildFragmentManager();
-//            Pair<String,String> pr = colorgen();
         colorgen();
-//            bg= pr.first;col=pr.second;
         bg= sharedPreferences.getString("bg","#000000");col=sharedPreferences.getString("col","#FFFFFF");
         gamegrid fragment = new gamegrid(l,rd.nextInt(l)+1,rd.nextInt(l)+1,this,bg,col);
         fragmentManager.beginTransaction().replace(R.id.gridcontainer,fragment).commit();
