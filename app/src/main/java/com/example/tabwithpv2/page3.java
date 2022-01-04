@@ -80,8 +80,8 @@ public class page3 extends Fragment {
         int R = rd.nextInt(256);
         int G = rd.nextInt(256);
         int B = rd.nextInt(256);
-        int dr, dg, db;
-        int range = Integer.max((25 - stage / 4), 8);
+        int dr, dg, db,range;
+        range = Integer.max((25 - stage / 4), 8);
         if (isEasy) {
             int theta = myrd(-180, 180);
             int alpha = myrd(-90, 90);
@@ -96,6 +96,25 @@ public class page3 extends Fragment {
             range -= Math.abs(dg);
             db = myrd(-range, range);
         }
+
+//        if (isEasy) {
+//            range = Integer.max((16 - stage / 4), 6);
+//            int r1 = (myrd(0,1)*2)-1;
+//            int r2 = (myrd(0,1)*2)-1;
+//            int r3= (myrd(0,1)*2)-1;
+//            dr = range*r1;
+//            dg = range*r2;
+//            db = range*r3;
+//        }
+//        else{
+//            range = Integer.max((12 - stage / 3), 4);
+//            int r1 = (myrd(0,1)*2)-1;
+//            int r2 = (myrd(0,1)*2)-1;
+//            int r3= (myrd(0,1)*2)-1;
+//            dr = range*r1;
+//            dg = range*r2;
+//            db = range*r3;
+//        }
 
         int nR = change(R, dr), nG = change(G, dg), nB = change(B, db);
         bg = "#"+conv(R)+conv(G)+conv(B);
