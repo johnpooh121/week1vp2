@@ -79,12 +79,18 @@ public class page3 extends Fragment {
         int R = rd.nextInt(256);
         int G = rd.nextInt(256);
         int B = rd.nextInt(256);
-        float range=Integer.max((25-stage/4),8);
-        int theta =myrd(-180,180);
-        int alpha =myrd(-90,90);
-        int dr=(int)(range*Math.sin(Math.toRadians(alpha)));
-        int dg =(int)(range*Math.cos(Math.toRadians(alpha)*Math.sin(Math.toRadians(theta))));
-        int db =(int)(range*Math.cos(Math.toRadians(alpha)*Math.cos(Math.toRadians(theta))));
+//        float range=Integer.max((25-stage/4),8);
+//        int theta =myrd(-180,180);
+//        int alpha =myrd(-90,90);
+//        int dr=(int)(range*Math.sin(Math.toRadians(alpha)));
+//        int dg =(int)(range*Math.cos(Math.toRadians(alpha)*Math.sin(Math.toRadians(theta))));
+//        int db =(int)(range*Math.cos(Math.toRadians(alpha)*Math.cos(Math.toRadians(theta))));
+        int range=Integer.max((25-stage/4),8);
+        int dr = myrd(-range,range);
+        range-=Math.abs(dr);
+        int dg = myrd(-range,range);
+        range-=Math.abs(dg);
+        int db = myrd(-range,range);
         int nR=change(R,dr),nG=change(G,dg),nB=change(B,db);
 
         bg = "#"+conv(R)+conv(G)+conv(B);
